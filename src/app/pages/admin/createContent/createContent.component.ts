@@ -57,7 +57,7 @@ export class CreateContentComponent implements OnInit {
   }
   createevent(){
     console.log(this.Event)
-          this.EventService.create(4,this.Event).subscribe((response:any)=>{
+          this.EventService.create(1,this.Event).subscribe((response:any)=>{
 
          
 
@@ -68,7 +68,7 @@ export class CreateContentComponent implements OnInit {
          
   }
   createpublicarion(){
-    this.PublicationService.create(this.Publication,4,"false").subscribe((response:any)=>{
+    this.PublicationService.create(this.Publication,1,"false").subscribe((response:any)=>{
         this.cd.navigate(['/admin'])
     })
   }

@@ -7,6 +7,9 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from '../environments/environment';
 import { ArtistNavegationComponent } from '../../Artists/ArtistNavegation/ArtistNavegation.component';
 import { FanaticnavigationComponent } from '../../Fanatic/fanaticnavigation/fanaticnavigation.component';
+import { PublicationService } from 'src/app/services/publication/publication.service';
+import { Publication } from 'src/app/models/publication';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -17,15 +20,21 @@ export class ChatComponent implements OnInit {
   idurl!:number
   home!:string
   BACK_ENABLED: boolean = true;
+  object:Publication
+  auxLinks:any = [];
   @Input('messages') messages: Message[]=[];
   @Input('colorBackRight') colorBackRight: string = "";
   @Input('colorFontRight') colorFontRight: string = "";
   @Input('colorBackLeft') colorBackLeft: string = "";
   @Input('colorFontLeft') colorFontLeft: string = "";
+  dataSource: MatTableDataSource<any>;
 
   textInput = '';
 
-  constructor(private chatService: ChatService,private ActivatedRoute:ActivatedRoute) {}
+  constructor(private chatService: ChatService,private publicationService: PublicationService,private ActivatedRoute:ActivatedRoute) {
+    this.dataSource = new MatTableDataSource<any>();
+    this.object = {} as Publication;
+  }
 
   ngOnInit() {
     let id=parseInt(this.ActivatedRoute.snapshot.paramMap.get('id')!)
@@ -39,7 +48,7 @@ export class ChatComponent implements OnInit {
     if(this.whois=="HomeFanatic"){
      this.home="HomeFanatic"
     }
-
+    console.log(typeof this.textInput)
   }
 
   sendMessage(){
@@ -54,10 +63,39 @@ export class ChatComponent implements OnInit {
         .subscribe((res: ResponseMessage) => {
           let messageReturn: Message = { text: res.responseMessage, date: new Date().toDateString(), userOwner: false}
           this.messages.push(messageReturn);
-
+          console.log(messageBack)
+          if(res.responseMessage == "Este será la descripción de tu contenido, seguro de esta respuesta?"){
+            console.log(messageBack)
+            this.object.description = String(messageBack.text)
+            console.log(this.object)
+            let mayus=this.auxLinks.length > 0
+            this.publicationService.create(this.object,this.idurl,String(mayus)).subscribe((response: any) => {
+              this.dataSource.data.push( {...response});
+              this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
+            });
+          }
         });
+        //this.ObtainMessage();
       }
       this.textInput = '';
+    }
+  }
+
+  ObtainMessage(){
+    let messageBack: TextMessage = { "firstname": environment.firstName, "text": this.textInput}
+      
+    if(this.BACK_ENABLED){
+      this.chatService.sendMessage(messageBack).subscribe((res: ResponseMessage) => {
+        if(res.responseMessage == "Este será la descripción de tu contenido, seguro de esta respuesta?"){
+          this.object.description = this.textInput
+          console.log(this.object)
+          let mayus=this.auxLinks.length > 0
+          this.publicationService.create(this.object,this.idurl,String(mayus)).subscribe((response: any) => {
+            this.dataSource.data.push( {...response});
+            this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
+          });
+        }
+      });
     }
   }
 
@@ -68,5 +106,4 @@ export class ChatComponent implements OnInit {
   }
 
  
-
 }

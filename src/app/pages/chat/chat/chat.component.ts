@@ -10,6 +10,11 @@ import { FanaticnavigationComponent } from '../../Fanatic/fanaticnavigation/fana
 import { PublicationService } from 'src/app/services/publication/publication.service';
 import { Publication } from 'src/app/models/publication';
 import { MatTableDataSource } from '@angular/material/table';
+import { Event } from 'src/app/models/event'
+import { EventService } from 'src/app/services/event/event.service';
+import { ArtistService } from 'src/app/services/artist/artist.service';
+import { Artist } from 'src/app/models/artist';
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -21,6 +26,9 @@ export class ChatComponent implements OnInit {
   home!:string
   BACK_ENABLED: boolean = true;
   object:Publication
+  objectevent:Event
+  artist:Artist
+  cont:number = 0
   auxLinks:any = [];
   @Input('messages') messages: Message[]=[];
   @Input('colorBackRight') colorBackRight: string = "";
@@ -28,12 +36,18 @@ export class ChatComponent implements OnInit {
   @Input('colorBackLeft') colorBackLeft: string = "";
   @Input('colorFontLeft') colorFontLeft: string = "";
   dataSource: MatTableDataSource<any>;
+  dataSource2: MatTableDataSource<any>;
 
   textInput = '';
 
-  constructor(private chatService: ChatService,private publicationService: PublicationService,private ActivatedRoute:ActivatedRoute) {
+  constructor(private chatService: ChatService,private publicationService: PublicationService,private eventService:EventService,private ActivatedRoute:ActivatedRoute, 
+    private artistService:ArtistService) {
+
     this.dataSource = new MatTableDataSource<any>();
+    this.dataSource2 = new MatTableDataSource<any>();
     this.object = {} as Publication;
+    this.objectevent = {} as Event;
+    this.artist = {} as Artist;
   }
 
   ngOnInit() {
@@ -59,12 +73,13 @@ export class ChatComponent implements OnInit {
 
       let messageBack: TextMessage = { "firstname": environment.firstName, "text": this.textInput}
       if(this.BACK_ENABLED){
-        this.chatService.sendMessage(messageBack)
-        .subscribe((res: ResponseMessage) => {
+        this.chatService.sendMessage(messageBack).subscribe((res: ResponseMessage) => {
           let messageReturn: Message = { text: res.responseMessage, date: new Date().toDateString(), userOwner: false}
           this.messages.push(messageReturn);
           console.log(messageBack)
-          if(res.responseMessage == "Este será la descripción de tu contenido, seguro de esta respuesta?"){
+          //Para crear publicaciones
+          
+          if(res.responseMessage == "Este será la descripción de tu publicación, seguro de esta respuesta?"){
             console.log(messageBack)
             this.object.description = String(messageBack.text)
             console.log(this.object)
@@ -74,28 +89,30 @@ export class ChatComponent implements OnInit {
               this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
             });
           }
+          //Para crear eventos
+
+          if(res.responseMessage == "Este será la descripción de tu evento, seguro de esta respuesta?"){
+            this.cont+=1
+            console.log(messageBack)
+            this.objectevent.description = String(messageBack.text)
+            this.objectevent.name = "Event " + String(this.cont)
+            this.objectevent.ticketLink = "https://teleticket.com.pe/"
+            console.log(this.objectevent)
+            this.artistService.checkremiumartistid(this.idurl).subscribe((respremium: any) => {
+              if(respremium == true){
+                this.eventService.create(this.idurl,this.objectevent).subscribe((response: any) => {
+                  this.dataSource2.data.push( {...response});
+                  this.dataSource2.data = this.dataSource2.data.map((o: any) => { return o; });
+                });
+              }else{
+                alert("No es artista premium, por favor mejorar su cuenta a premium para crear un evento!")
+              }
+            });
+          }
+
         });
-        //this.ObtainMessage();
       }
       this.textInput = '';
-    }
-  }
-
-  ObtainMessage(){
-    let messageBack: TextMessage = { "firstname": environment.firstName, "text": this.textInput}
-      
-    if(this.BACK_ENABLED){
-      this.chatService.sendMessage(messageBack).subscribe((res: ResponseMessage) => {
-        if(res.responseMessage == "Este será la descripción de tu contenido, seguro de esta respuesta?"){
-          this.object.description = this.textInput
-          console.log(this.object)
-          let mayus=this.auxLinks.length > 0
-          this.publicationService.create(this.object,this.idurl,String(mayus)).subscribe((response: any) => {
-            this.dataSource.data.push( {...response});
-            this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
-          });
-        }
-      });
     }
   }
 

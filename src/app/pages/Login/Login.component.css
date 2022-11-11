@@ -29,6 +29,7 @@
   .but{
     font-size: 25px;
     color:rgb(0, 0, 0);
+    margin: 18px;
     background-color: rgb(212, 175, 55);
   }
 
@@ -36,13 +37,16 @@
       font-size: 15px;
       word-spacing:4px;
       line-height: 60px;
-      margin: 18px;
+      margin: 16px;
       }
 
 .form-control{
           border-radius: 8px;
           box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-          width: 500px;
+          width: 450px;
           height: 50px;
-          margin: 10px
+          margin: auto;
+          padding: 20px;
+          background-position: center;
+          justify-content: center;        
         }

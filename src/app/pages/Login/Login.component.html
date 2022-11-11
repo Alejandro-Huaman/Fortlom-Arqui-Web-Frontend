@@ -1,45 +1,32 @@
-<mat-grid-list cols="2" rows="5" rowHeight="700px">
+<body class="imagelogin">
+  <div class="cardLogin">
+  <img src="https://cdn.discordapp.com/attachments/866839251563446272/893007021786419200/Logo_Fortlom_JavaBoys.png" class="logo">
 
-  <mat-grid-tile>
-  <form [formGroup]="loginform" class="form"  >
+<form [formGroup]="loginform" class="form" >
+<div class="form-group">
   
-    <div class="form-group">
-  
-      <input formControlName="email" matInput type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" requiered >
-      <mat-error *ngIf="loginform.controls['email'].dirty && loginform.hasError('required','email')">Es requerido</mat-error>
-    </div>
-    <div class="form-group" >
-  
-      <input formControlName="password" matInput type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" required>
-      <mat-error *ngIf="loginform.controls['password'].dirty && loginform.hasError('required','password')">Es requerido</mat-error>
-  
-    </div>
-  
-  
-  
-    <button type="submit"  [disabled]="!loginform.valid" mat-raised-button color="primary" id="enter" class="but" (click)="onSubmit()">Ingresar</button>
-    <div class="form-group">
-  
-      <a routerLink="/registerfanatic"  style="color:#000000;" class="link">Register yourself as a fan</a>
-      <mat-divider></mat-divider>
-      <a routerLink="/registerartist" style="color:#000000;" class="link">Register yourself as an artist</a>
-      <mat-divider></mat-divider>
-      <a routerLink="/sendemail" style="color:#000000;" class="link">You Forgot your Password</a>
-  
-  
-    </div>
-     
-  
-  </form>
-  
-  </mat-grid-tile>
-  <mat-grid-tile>
+  <input formControlName="email" matInput type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" requiered >
+  <mat-error *ngIf="loginform.controls['email'].dirty && loginform.hasError('required','email')" class="bad">Es requerido</mat-error>
+</div>
+<div class="form-group" >
+
+  <input formControlName="password" matInput type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" required>
+  <mat-error *ngIf="loginform.controls['password'].dirty && loginform.hasError('required','password')" class="bad">Es requerido</mat-error>
+
+</div>
+
+
+
+<button type="submit"  [disabled]="!loginform.valid" mat-raised-button color="primary" id="enter" class="but" (click)="onSubmit()">Ingresar</button>
+</form>
+
     <div>
-  <img src='https://cdn.discordapp.com/attachments/866839251563446272/898317609735450654/unknown.png'
-  class="imagehome">
-  
-  <h2 class="pp">“Connect with the artists you love, or with the fans you adore”</h2>
-  
+      <b><a routerLink="/registerfanatic"  style="color:#000000;" class="link">Register yourself as a fan</a></b>
+      <b><a routerLink="/registerartist" style="color:#000000;" class="link">Register yourself as an artist</a></b>
+    </div>
+    <div>
+    <b><a routerLink="/sendemail" style="color:#000000;" class="link">You Forgot your Password</a></b>
+    </div>
+    
   </div>
-  </mat-grid-tile>
-  </mat-grid-list>
+</body>

@@ -24,16 +24,18 @@
 }
 
 .headbar {
-    border-top: 2px solid grey;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     height: 12%;
     color: white;
     background-color:black;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 15px;
     font-size: x-large;
 }
 
-.input-text-message {
+.input-text-message { 
+    border-bottom-left-radius: 20px;
     height: 100%;
     width: 80%;
 }

@@ -4,27 +4,34 @@
 <div *ngIf="home=='HomeFanatic'">
   <app-fanaticnavigation></app-fanaticnavigation>
 </div>
+<div style="background-image: url('assets/images/LoginImage.png'); background-repeat: no-repeat; background-position: center; background-size: cover; width: 100%; height: 100%;" >
+  <div class="padding"></div>
 
-<div class="padding"></div>
-<table style="margin-left: auto;margin-right: auto; width: 80%;height: 100%; border: 1px solid black;">
-  <div class="headbar">
-    <div style="display: inline-flex;">
-      <img src="https://cdn.discordapp.com/attachments/866839251563446272/893007021786419200/Logo_Fortlom_JavaBoys.png" class="logo">
-      <h1 style="padding-top: 15px;">Fortlom ChatBot</h1>
+  <table style="margin-left: 100px;margin-right: auto; width: 28%; height: 79%; border-top-left-radius: 20px; border-top-right-radius: 20px; background-color: white;">
+    
+    <div class="headbar">
+        <div style="display: inline-flex;">
+          <img src="https://cdn.discordapp.com/attachments/866839251563446272/893007021786419200/Logo_Fortlom_JavaBoys.png" class="logo">
+          <h1 style="padding-top: 15px;">Fortlom ChatBot</h1>
+        </div>
     </div>
-  </div>
-  <div class="list-messages">
-    <div *ngFor="let message of messages" class="message-container">
-      <app-message class="message" [text]="message.text!" [date]="message.date" [colorBackRight]="colorBackRight" [colorFontRight]="colorFontRight"
-      [colorBackLeft]="colorBackLeft" [colorFontLeft]="colorFontLeft" [owner]="message.userOwner!"
-      [ngClass]="{'left-message': !message.userOwner, 'right-message': message.userOwner}"></app-message>
+  
+    <div class="list-messages">
+      <div *ngFor="let message of messages" class="message-container">
+        <app-message class="message" [text]="message.text!" [date]="message.date" [colorBackRight]="colorBackRight" [colorFontRight]="colorFontRight"
+        [colorBackLeft]="colorBackLeft" [colorFontLeft]="colorFontLeft" [owner]="message.userOwner!"
+        [ngClass]="{'left-message': !message.userOwner, 'right-message': message.userOwner}"></app-message>
+      </div>
     </div>
-  </div>
-  <div class="input-message form-group" style="border: 1px solid black;">
-    <textarea class="input-text-message form-input" [(ngModel)]="textInput" placeholder="Type text here" (keyup)="onKey($event)"></textarea>
-    <i class="input-send" aria-hidden="true" (click)="sendMessage()">
-      <mat-icon>send</mat-icon>  
-    </i>
-  </div>
-</table>
-<div class="padding"></div>
+
+    <div class="input-message form-group" style="border: 1px solid black; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+      <textarea class="input-text-message form-input" [(ngModel)]="textInput" placeholder="Ingrese el mensaje aqui" (keyup)="onKey($event)"></textarea>
+      <i class="input-send" aria-hidden="true" (click)="sendMessage()">
+        <img src="assets/images/send.png" style="height: 120px; padding-bottom: 50px; padding-left: 20px; padding-top: 20px;cursor: pointer;">  
+      </i>
+    </div>
+
+  </table>
+
+  <div class="padding"></div>
+</div>

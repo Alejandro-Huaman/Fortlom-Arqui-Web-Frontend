@@ -75,7 +75,12 @@ export class ChatComponent implements OnInit {
       if(this.BACK_ENABLED){
         this.chatService.sendMessage(messageBack).subscribe((res: ResponseMessage) => {
           let messageReturn: Message = { text: res.responseMessage, date: new Date().toDateString(), userOwner: false}
-          this.messages.push(messageReturn);
+          if(res.responseMessage == "Se creo la publicación correctamente :D" || res.responseMessage == "Se creo el evento correctamente :D"){
+            
+          }else{
+            this.messages.push(messageReturn);
+          }
+
           console.log(messageBack)
           console.log(res.responseMessage)
           //Para crear publicaciones
@@ -93,8 +98,11 @@ export class ChatComponent implements OnInit {
                 this.publicationService.create(this.object,this.idurl,String(mayus)).subscribe((response: any) => {
                   this.dataSource.data.push( {...response});
                   this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
+                  this.messages.push(messageReturn);
                 });
               }else{
+                let errormessage:Message = { text: "No se creo correctamente! :c", date: new Date().toDateString(), userOwner: false} 
+                this.messages.push(errormessage);
                 alert("No es un artista por tal motivo no puede crear publicaciones!")
               }
 
@@ -118,12 +126,17 @@ export class ChatComponent implements OnInit {
                     this.eventService.create(this.idurl,this.objectevent).subscribe((response: any) => {
                       this.dataSource2.data.push( {...response});
                       this.dataSource2.data = this.dataSource2.data.map((o: any) => { return o; });
+                      this.messages.push(messageReturn);
                     });
                   }else{
+                    let errormessage:Message = { text: "No se creo correctamente! :c", date: new Date().toDateString(), userOwner: false} 
+                    this.messages.push(errormessage);
                     alert("No es artista premium, por favor mejorar su cuenta a premium para crear un evento!")
                   }
                 });
               }else{
+                let errormessage:Message = { text: "No se creo correctamente! :c", date: new Date().toDateString(), userOwner: false} 
+                this.messages.push(errormessage);
                 alert("No es un artista por tal motivo no puede crear eventos!")
               }
 

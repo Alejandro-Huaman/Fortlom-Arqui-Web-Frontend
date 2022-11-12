@@ -1,15 +1,46 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.imageRegister{
+  background-image: url(./RegisterImage.png);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-position: 50% 50%;
+  padding-top: 2rem;
+  overflow: auto;
+}
+
+.cardRegister{
+  background-color: #fff;
+  border-radius: 1.0rem;
+  max-width: 30%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  }
+
+  .form-control{
+    background-color: #fff;
+    border-radius: 1.0rem;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;      
+  }
+
 .imagehome{
 
     height:490px;
     cursor: pointer;
     }
-    .form{
-  
-  
-      height:60%;
-      width:65%;
-  
-      }
+
       .but{
         
         height:10%;

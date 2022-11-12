@@ -77,36 +77,56 @@ export class ChatComponent implements OnInit {
           let messageReturn: Message = { text: res.responseMessage, date: new Date().toDateString(), userOwner: false}
           this.messages.push(messageReturn);
           console.log(messageBack)
+          console.log(res.responseMessage)
           //Para crear publicaciones
           
           if(res.responseMessage == "Este será la descripción de tu publicación, seguro de esta respuesta?"){
             console.log(messageBack)
-            this.object.description = String(messageBack.text)
-            console.log(this.object)
-            let mayus=this.auxLinks.length > 0
-            this.publicationService.create(this.object,this.idurl,String(mayus)).subscribe((response: any) => {
-              this.dataSource.data.push( {...response});
-              this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
+            console.log(res.responseMessage)
+
+            this.artistService.checkartistid(this.idurl).subscribe((resartist: any) => {
+            
+              if(resartist == true){
+                this.object.description = String(messageBack.text)
+                console.log(this.object)
+                let mayus=this.auxLinks.length > 0
+                this.publicationService.create(this.object,this.idurl,String(mayus)).subscribe((response: any) => {
+                  this.dataSource.data.push( {...response});
+                  this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
+                });
+              }else{
+                alert("No es un artista por tal motivo no puede crear publicaciones!")
+              }
+
             });
           }
           //Para crear eventos
 
           if(res.responseMessage == "Este será la descripción de tu evento, seguro de esta respuesta?"){
-            this.cont+=1
             console.log(messageBack)
-            this.objectevent.description = String(messageBack.text)
-            this.objectevent.name = "Event " + String(this.cont)
-            this.objectevent.ticketLink = "https://teleticket.com.pe/"
-            console.log(this.objectevent)
-            this.artistService.checkremiumartistid(this.idurl).subscribe((respremium: any) => {
-              if(respremium == true){
-                this.eventService.create(this.idurl,this.objectevent).subscribe((response: any) => {
-                  this.dataSource2.data.push( {...response});
-                  this.dataSource2.data = this.dataSource2.data.map((o: any) => { return o; });
+            console.log(res.responseMessage)
+            
+            this.artistService.checkartistid(this.idurl).subscribe((resartist: any) => {
+              if(resartist == true){
+                this.artistService.checkremiumartistid(this.idurl).subscribe((respremium: any) => {
+                  if(respremium == true){
+                    this.cont+=1
+                    this.objectevent.description = String(messageBack.text)
+                    this.objectevent.name = "Event " + String(this.cont)
+                    this.objectevent.ticketLink = "https://teleticket.com.pe/"
+                    console.log(this.objectevent)
+                    this.eventService.create(this.idurl,this.objectevent).subscribe((response: any) => {
+                      this.dataSource2.data.push( {...response});
+                      this.dataSource2.data = this.dataSource2.data.map((o: any) => { return o; });
+                    });
+                  }else{
+                    alert("No es artista premium, por favor mejorar su cuenta a premium para crear un evento!")
+                  }
                 });
               }else{
-                alert("No es artista premium, por favor mejorar su cuenta a premium para crear un evento!")
+                alert("No es un artista por tal motivo no puede crear eventos!")
               }
+
             });
           }
 

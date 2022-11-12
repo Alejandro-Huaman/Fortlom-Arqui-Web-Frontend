@@ -80,7 +80,7 @@ export class ChatComponent implements OnInit {
           console.log(res.responseMessage)
           //Para crear publicaciones
           
-          if(res.responseMessage == "Este será la descripción de tu publicación, seguro de esta respuesta?"){
+          if(res.responseMessage == "Se creo la publicación correctamente :D"){
             console.log(messageBack)
             console.log(res.responseMessage)
 
@@ -102,10 +102,10 @@ export class ChatComponent implements OnInit {
           }
           //Para crear eventos
 
-          if(res.responseMessage == "Este será la descripción de tu evento, seguro de esta respuesta?"){
+          if(res.responseMessage == "Se creo el evento correctamente :D"){
             console.log(messageBack)
             console.log(res.responseMessage)
-            
+
             this.artistService.checkartistid(this.idurl).subscribe((resartist: any) => {
               if(resartist == true){
                 this.artistService.checkremiumartistid(this.idurl).subscribe((respremium: any) => {

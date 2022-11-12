@@ -1,6 +1,6 @@
-<mat-grid-list cols="2" rows="5" rowHeight="700px">
-
-  <mat-grid-tile>
+<body class="imageRegister">
+  <div class="cardRegister">
+  <img src="https://cdn.discordapp.com/attachments/866839251563446272/893007021786419200/Logo_Fortlom_JavaBoys.png" class="logo">
   <form [formGroup]="signupform" class="form"  (submit)="onSubmit()">
 
     <div class="form-group">
@@ -8,48 +8,42 @@
       <input formControlName="email" [(ngModel)]="user.email" matInput type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" requiered >
       <mat-error *ngIf="signupform.controls['email'].dirty && signupform.hasError('required','email')">Es requerido</mat-error>
     </div>
+    <p></p>
     <div class="form-group" >
 
       <input formControlName="password"   [(ngModel)]="user.password" matInput type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" required>
       <mat-error *ngIf="signupform.controls['password'].dirty && signupform.hasError('required','password')">Es requerido</mat-error>
 
     </div>
-
+<p></p>
     <div class="form-group">
 
       <input  formControlName="username"  [(ngModel)]="user.username" matInput type="Name" class="form-control form-control-lg" id="exampleInputUserName1" placeholder="UserName" required>
       <mat-error  *ngIf="signupform.controls['username'].dirty && signupform.hasError('required','username')">Es requerido</mat-error>
     </div>
-
+<p></p>
 
     <div class="form-group">
 
       <input  formControlName="name"  [(ngModel)]="user.realname" matInput type="Name" class="form-control form-control-lg" id="exampleInputName1" placeholder="Name" required>
       <mat-error  *ngIf="signupform.controls['name'].dirty && signupform.hasError('required','name')">Es requerido</mat-error>
     </div>
-
+<p></p>
 
     <div class="form-group">
 
       <input formControlName="lastname" [(ngModel)]="user.lastname"  matInput type="LastName" class="form-control form-control-lg" id="exampleInputLastName1" placeholder="LastName" required>
       <mat-error  *ngIf="signupform.controls['lastname'].dirty && signupform.hasError('required','lastname')">Es requerido</mat-error>
     </div>
+    <p></p>
 
 
-    <button type="submit"  [disabled]="!signupform.valid" mat-raised-button color="primary" class="but"  id="enter">Register as Artist</button>
-
-
+    <button type="submit"  [disabled]="!signupform.valid" mat-raised-button color="primary" id="enter" class="but">Register as Artist</button>
 
   </form>
 
-  </mat-grid-tile>
-  <mat-grid-tile>
-    <div>
-  <img src='https://cdn.discordapp.com/attachments/866839251563446272/898347008337805332/unknown.png'
-  class="imagehome">
-
-
-
+  <div>
+  <b><a routerLink="/login"  style="color:#000000;" class="link">I have a account</a></b>
   </div>
-  </mat-grid-tile>
-  </mat-grid-list>
+  </div>
+</body>

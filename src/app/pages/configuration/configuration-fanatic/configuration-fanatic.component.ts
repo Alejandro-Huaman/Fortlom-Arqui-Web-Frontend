@@ -175,7 +175,7 @@ export class ConfigurationFanaticComponent implements OnInit {
                  
                   this.MultimediaService.createimageforuser(this.selectedFile,this.userdata.id).subscribe((response: any)=>{
                            console.log("actualizado")
-                           this.retrievedImage=response.imagenUrl
+                           this.retrievedImage=response.body.imagenUrl
                   })
                 })
 
@@ -198,7 +198,7 @@ export class ConfigurationFanaticComponent implements OnInit {
     retrieveResonse: any;
   getImage(){
     this.MultimediaService.getImageByUserId(this.fanaticdata.id).subscribe((response: any)=>{
-      if(response.number==0){
+      if(response.numberOfElements==0){
         this.retrievedImage="https://cdn.discordapp.com/attachments/1008578583251406990/1031677299101286451/unknown.png"
        }
        else{

@@ -285,7 +285,8 @@ public onFileChanged(event:any) {
                  
                   this.MultimediaService.createimageforuser(this.selectedFile,this.userdata.id).subscribe((response: any)=>{
                            console.log("actualizado")
-                           this.retrievedImage=response.imagenUrl
+                           console.log(response)
+                           this.retrievedImage=response.body.imagenUrl
                   })
                 })
 
@@ -309,9 +310,10 @@ retrievedImage: any;
   retrieveResonse: any;
   getImage(){
       this.MultimediaService.getImageByUserId(this.artistdata.id).subscribe((response: any)=>{
-             if(response.number==0){
+             
+          if(response.numberOfElements==0){
               this.retrievedImage="https://cdn.discordapp.com/attachments/1008578583251406990/1031677299101286451/unknown.png"
-
+              
              }
              else{
               this.retrievedImage=response.content[0].imagenUrl

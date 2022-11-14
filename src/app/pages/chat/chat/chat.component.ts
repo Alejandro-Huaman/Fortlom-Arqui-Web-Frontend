@@ -102,7 +102,7 @@ export class ChatComponent implements OnInit {
                 });
                 
               }else{
-                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear cotenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
+                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear contenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
                   this.messages.push(fanmessage);
               }
             });
@@ -122,7 +122,7 @@ export class ChatComponent implements OnInit {
                 });
                 
               }else{
-                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear cotenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
+                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear contenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
                   this.messages.push(fanmessage);
               }
             });
@@ -142,7 +142,7 @@ export class ChatComponent implements OnInit {
                 });
                 
               }else{
-                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear cotenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
+                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear contenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
                   this.messages.push(fanmessage);
               }
             });
@@ -151,7 +151,7 @@ export class ChatComponent implements OnInit {
               if(resartist == true){
                 this.messages.push(messageReturn);
               }else{
-                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear cotenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
+                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear contenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
                   this.messages.push(fanmessage);
               }
             });

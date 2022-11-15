@@ -90,6 +90,15 @@ delete(id: any) {
       catchError(this.handleError));
 }
 
+getImageByUserId(id:number){
+  
+  return this.http.get<Event>(`${this.basePath}/users/${id}/images`, this.httpOptions)
+  .pipe(
+    retry(2),
+    catchError(this.handleError));
+
+}
+
 
 
 

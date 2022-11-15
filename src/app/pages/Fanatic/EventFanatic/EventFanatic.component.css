@@ -1,80 +1,100 @@
-table {
-    width: 100%;
+.Title{
+  
+  font-family: Arial, Helvetica, sans-serif;
+  color:whitesmoke;
+  text-align: center;
+  font-style: normal;
+  font-size: 50px;
+  font-weight: bold;
+  -webkit-text-stroke:0.25px;
+  -webkit-text-stroke-color: black;
+  position: absolute;
+  top: 65px;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  justify-items: center;
+  background-position: center;
   }
 
-.padding{
-  padding-bottom: 100pt;
+.imageBackground{
+  background-image: url(./event.jpg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-position: 50% 50%;
+  padding-top: 12rem;
+  overflow: auto;
 }
 
-.minipadding{
-  padding-bottom: 10pt;
+.background1-left-column{
+  background: linear-gradient(180deg, #000, #000);
+  border-radius: 1rem;
 }
 
-.center{
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-}
-.spacer{
- padding-right: 20pt; 
+
+.example-card-event{
+  background-color:#cca027;
+  border-radius: 1rem;
+  box-shadow: 0  1rem 1rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  margin: 1.5rem;
+  overflow: hidden;
+  width: 40rem;
 }
 
-.example-card {
-  background-color: #CCCCCC;
-  color:#000000;
-  margin: auto;
-  width: 50%;
-  padding: 20px;
+
+.text h1{
+  color: aliceblue;
+  text-align: center;
+  font-size: 30px;
+  margin: 1rem;
 }
 
-.example-form-card {
-  background-color: white;
-  color:#000000;
-  margin: auto;
-  width: 50%;
-  padding: 20px;
+.text2 h1{
+  color: 000;
+  text-align: left;
+  margin: 0.5rem;
 }
 
-.example-header-image {
-  background-image: url('https://i.pinimg.com/236x/37/c8/51/37c851a36c42af61f36f1201222e6b7b.jpg');
+.text2 p {
+  color: #000;
+  text-align: left;
+  margin: 0.5rem;
+}
+
+.link a{
+  left: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section .card .image img{
+  object-fit: cover;
+  border-radius: 90%;
+  border: 3px solid #fff;
   background-size: cover;
 }
 
-.buttonspacer{
-  width: 100px; 
-  margin-left: 100%;
-  transform: translateX(-100%);
-}
-
-.button{
-  background-color: #9CC7EF;
-  color: #000000;
-}
-
-.image{
-  border-radius: 25pt;
-  width: 100%;
+.card{
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  width: 80rem;
+  justify-content: center;
+  justify-items: center;
+  padding: auto;
   margin: auto;
 }
 
-.spaceshort{
-  padding-right: 100px;   
-}
-.example-card-event{
-  max-width: 1000px;
-  width: 50%;
-}
-
-.centerbuttons{
-  text-align: center;
-}
-
-.buttonShow{
-  background-color: #9CC7EF;
-  color: #000000;
-  width: 50%;
-}
-
-.withoutborder{
-  border:0;
+.card .content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }

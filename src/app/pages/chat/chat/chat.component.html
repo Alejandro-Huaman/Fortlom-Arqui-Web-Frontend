@@ -18,9 +18,11 @@
   
     <div class="list-messages">
       <div *ngFor="let message of messages" class="message-container">
+        <div style="padding-top: 10px;"></div>
         <app-message class="message" [text]="message.text!" [date]="message.date" [colorBackRight]="colorBackRight" [colorFontRight]="colorFontRight"
         [colorBackLeft]="colorBackLeft" [colorFontLeft]="colorFontLeft" [owner]="message.userOwner!"
         [ngClass]="{'left-message': !message.userOwner, 'right-message': message.userOwner}"></app-message>
+        <div style="padding-bottom: 10px;"></div>
       </div>
     </div>
 

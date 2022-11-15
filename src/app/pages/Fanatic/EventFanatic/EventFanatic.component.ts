@@ -187,6 +187,13 @@ decreaselikes(id:number){
 
   }
 
+  getimage(id:number){
+    this.eventService.getImageByUserId(id).subscribe((response:any)=>{
+          return response.content[0].imagenUrl
+    })
+}
+  
+
 
 
 

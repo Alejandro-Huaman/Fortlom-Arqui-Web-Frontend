@@ -6,6 +6,8 @@ export interface Event {
       registerdate:Date
       ticketLink:string
       artist:Artist
+      imagenUrl:string;
+      imagenId:string
 
       likes:number;
 }

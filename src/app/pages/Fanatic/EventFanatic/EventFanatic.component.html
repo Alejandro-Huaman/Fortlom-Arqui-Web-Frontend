@@ -1,74 +1,84 @@
-
-
 <app-fanaticnavigation></app-fanaticnavigation>
-
-<div class ="padding"></div>
-<table>
-  <tr>
-  <td>
-  <div class = "centerbuttons">
-  <button mat-raised-button class = "buttonShow" (click) = "ShowEventsArtist()" id="showeventsfanatic">Show All Events</button>
-  </div>
-  </td>
-  <td>
-  <div class = "centerbuttons">
-    <button mat-raised-button class = "buttonShow" (click) = "NotShowEventsArtist()">Not Show Events</button>
-  </div>
-  </td>
-  </tr>
-</table>
-<div class ="padding"></div>
-<div *ngIf = "showeventartist">
-<mat-grid-list cols="1" rowHeight="1:0.5">
-  <mat-grid-tile *ngFor ="let arr of arrayevents" class="spaceshort">
-      <mat-card class="example-card-event">
-        <mat-card-header *ngFor ="let arr2 of arrayusers">
-          <div *ngIf = "arr.artist.id == arr2.id">
-            <table class = "table">
-              <tr>
-                <td class = "withoutborder">
-                <div mat-card-avatar class="example-header-image"></div>
-                </td>
-                <td class = "withoutborder">
-                <h1>{{arr2.realname}}</h1>
-                </td>
-                <td class = "withoutborder">
-                <h1>{{arr2.lastname}}</h1>
-                </td>
-              </tr>
-            </table>
+<body class="imageBackground">
+<div class="Title">
+  Look for the most emotional events of the artists
+</div>
+<section>
+  <div class="swiper mySwiper container">
+    <div class="swiper-wrapper content">
+      <div class="swiper-slide card">
+        <div class="card-content">
+          <div class="image">
+            <img src="https://conciertosperu.com.pe/wp-content/uploads/2022/11/Motteros-CP.png" alt="">
           </div>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-card-title><h1>{{arr.name}}</h1></mat-card-title>
-          <p>{{arr.description}}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <table>
-            <tr>
-           
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+</section>
 
-              <app-Opinion [content]="arr" [user]="idevent"></app-Opinion>
-              <td>
+<mat-grid-list cols="2" rowHeight="500px">
+  <mat-grid-tile *ngFor ="let arr of arrayevents">
+      <mat-card class="example-card-event">
+        <div class="left-column background1-left-column" *ngFor ="let arr2 of arrayusers">
+          <div *ngIf = "arr.artist.id == arr2.id" class="text">
+                    <h1>{{arr.name}}</h1>
+          </div>
+          <div fxFlex="10" *ngIf = "arr.artist.id == arr2.id">
+            <app-imageforlist [artist]="arr2.id" class="imageEvent"></app-imageforlist>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div *ngFor ="let arr2 of arrayusers">
+            <div *ngIf = "arr.artist.id == arr2.id" class="text2">
+                <h1>{{arr2.realname}} {{arr2.lastname}}</h1>
+                <p>{{arr.description}}</p>
+            </div>
+          </div>
+          <div>
+          <app-Opinion [content]="arr" [user]="idevent" class="content"></app-Opinion>
                 <div class = "minipadding"></div>
                 <p>{{arr.eventlikes}}</p>
-              </td>
-            </tr>
-          </table>
-        </mat-card-actions>
-        <mat-card-footer>
-          <div *ngIf="checkislickisinevent(arr.ticketLink)">
-
+          </div>
+          <div *ngIf="checkislickisinevent(arr.ticketLink)" class="link">
             <a href="{{arr.ticketLink}}" id="tikcetlink"><button mat-button><mat-icon>link</mat-icon></button></a>
-
-
-           </div>
-
-         
-        </mat-card-footer>
+          </div>
+        </div>
       </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
 
-</div>
+
+<!-- Fontawesome CDN Link-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+
+</body>

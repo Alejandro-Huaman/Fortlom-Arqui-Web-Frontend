@@ -1,9 +1,20 @@
-{{follows}}
-<a mat-button (click)="follow(artist.id)" target="_blank" id="followartistasfan">
-  <mat-icon>favorite</mat-icon>
-  FOLLOW
-</a>
-<a mat-button (click)="unfollow(artist.id)" target="_blank" id="unfollowartistasfan">
-  <mat-icon>favorite</mat-icon>
-  UNFOLLOW
-</a>
+
+  <div>
+    <div class="followers">
+      <mat-icon style="color: #cca027; margin-bottom: 15px; ">people</mat-icon>
+     Followers: {{follows}}
+    </div>
+    
+    <div class="button1">
+      <a mat-button (click)="follow(artist.id)" target="_blank" id="followartistasfan" style="font-size: 20px; text-decoration: none;"  >
+        <mat-icon style="color: red;">favorite</mat-icon>
+        Follow
+      </a>
+    </div>
+    <div class="button2">
+      <a mat-button (click)="unfollow(artist.id)" target="_blank" id="unfollowartistasfan" style="font-size: 20px; text-decoration: none; ">
+        Unfollow
+      </a>
+    </div>
+  </div>
+  

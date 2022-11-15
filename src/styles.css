@@ -2,3 +2,19 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-slider-thumb {
+	background-color: #cca027 !important;
+   
+}
+
+.mat-slider-thumb-label {
+	background-color: #cca027 !important;
+    size: 2px;
+    
+}
+
+.mat-slider-track-fill {
+	background-color: #cca027 !important;
+   
+}

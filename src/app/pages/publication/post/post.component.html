@@ -10,6 +10,7 @@
   }
   a {
     text-decoration: none;
+    padding-top: 10px;
   }
   .limited-size {
     max-width: calc(100%);
@@ -20,8 +21,9 @@
 <mat-card class="post-mat-card">
 
   <mat-card-header>
-    <div mat-card-avatar class="header-image"></div>
-    <mat-card-title>
+    <mat-card-title style="display: inline-flex;">
+      <img [src]="retrievedImageUser" style="width: 45px; height: 40px; border-radius: 20px;">
+      <div style="padding-right: 20px;"></div>
       <a href="https://www.shutterstock.com/es/search/example+stamp?image_type=illustration">
         {{name}} {{lastname}}
       </a>

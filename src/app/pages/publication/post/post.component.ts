@@ -39,6 +39,7 @@ name!:string
 lastname!:string
 idop!:number
 descripcion!:string
+retrievedImageUser!:string
   @Input()
   textPart = "...";
   @Input()
@@ -78,8 +79,7 @@ descripcion!:string
 
     })
 
-
-
+    this.getImageofUser(this.fullPost.artist.id);
 
 
     this.usuarioservice.getById(this.fullPost.artist.id)
@@ -91,7 +91,12 @@ descripcion!:string
 
 
 
-
+  getImageofUser(id:number){
+    this.multimediaService.getImageByUserId(id).subscribe((response: any)=>{
+           this.retrievedImageUser=response.content[0].imagenUrl
+           console.log(this.retrievedImageUser)
+    })
+  }
 
 
 

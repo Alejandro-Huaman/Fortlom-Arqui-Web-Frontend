@@ -4,6 +4,10 @@
     flex-direction: column;
     height: 88%;
     overflow: auto;
+    background-image: url('../../../../assets/images/background_chatbot.jpg');
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: cover;
 }
 
 .left-message {

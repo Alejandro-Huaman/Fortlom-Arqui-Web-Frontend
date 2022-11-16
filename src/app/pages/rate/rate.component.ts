@@ -41,6 +41,7 @@ export class RateComponent implements OnInit {
 
   }
   NewRate(){
+    console.log("Entrando a funcion NewRate")
 
    
     this.rateservice.existbyartistoidandfanaticid(this.idcomment,this.idactualuser).subscribe((response:any)=>{
@@ -49,6 +50,7 @@ export class RateComponent implements OnInit {
         this.rateservice.create(this.idcomment,this.idactualuser,this.rate).subscribe((response: any) => {
 
           alert("Se ha calificado al artista")
+          console.log("Se ha calificado al artista")
     
         });
       }
@@ -57,8 +59,10 @@ export class RateComponent implements OnInit {
                        console.log(response.content[0])
                        console.log(this.rate.review)
                        this.rateservice.update(response.content[0].id,this.rate).subscribe((response:any)=>{
+                             alert("Se ha calificado al artista")
+                             console.log("Se ha calificado al artista")
                              return(response)
-
+                             
                        })
              })
       }

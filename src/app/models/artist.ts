@@ -15,6 +15,8 @@ export interface Artist {
 
       content:any;
 
+      aboutMe:string;
+
       artistfollowers:number;
 
       instagramLink:string;

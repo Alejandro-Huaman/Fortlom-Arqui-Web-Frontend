@@ -4,36 +4,35 @@
 
 
 <div class="basic-container">
-  <h1 style="padding-left: 40px;padding-top: 10px; font-size: 38px">ARTISTS</h1>
-  <mat-grid-list cols="2" rowHeight="500px">
-    <mat-grid-tile *ngFor="let i of artistList">
-      <mat-card [style.width]="'50%'">
-        <div fxLayout="row">
-          <div fxFlex="10">
-            <app-imageforlist [artist]="i.id"></app-imageforlist>
-          </div>
-
-          <div fxFlex fxFlexAlign="center">
-            <div fxLayout="row">
-              This is artist {{i.realname}} {{i.lastname}}
-            </div>
-            <div fxLayout="row">
-              <mat-icon [style.color]="'orange'">star</mat-icon>
-              <mat-icon [style.color]="'orange'">star</mat-icon>
-              <mat-icon [style.color]="'orange'">star</mat-icon>
-              <mat-icon [style.color]="'orange'">star_half</mat-icon>
-            </div>
-
-
-
-              <app-rate [idcomment]="i.id" id="rateartist"></app-rate>
-
-          </div>
-            <app-follows [artist]="i"   [user]="idnumber"></app-follows>
-
-        </div>
-      </mat-card>
-
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="introTitle">
+    Get to know some of the most trending artist right now
+  </div>
+  <div class="artist-cards">
+    <mat-grid-list cols="3" rowHeight="500px">
+      <mat-grid-tile *ngFor="let i of artistList">
+        <mat-card [style.width]="'65%'" class="artistCard" [style.border-radius]="'5%'" [style.padding]="'8px'">
+            <mat-card-content class="cardContent">
+              <app-imageforlist [artist]="i.id" ></app-imageforlist>
+              <div fxFlex fxFlexAlign="center">
+                <div fxLayout="row" class="artistName">
+                {{i.realname}} {{i.lastname}}
+                </div>
+                <div class="artistBio">
+                  {{i.aboutMe}}
+                </div>
+                <div class="artistRate">
+                  Rating
+                  <app-rate [idcomment]="i.id" id="rateartist"></app-rate>
+                </div>
+              </div>
+              <div class="following">
+                <app-follows [artist]="i"   [user]="idnumber"></app-follows>
+              </div>
+            </mat-card-content>
+         
+        </mat-card>
+  
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 </div>

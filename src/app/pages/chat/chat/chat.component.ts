@@ -14,6 +14,9 @@ import { Event } from 'src/app/models/event'
 import { EventService } from 'src/app/services/event/event.service';
 import { ArtistService } from 'src/app/services/artist/artist.service';
 import { Artist } from 'src/app/models/artist';
+import { FanaticService } from 'src/app/services/fanatic/fanatic.service';
+import { Forum } from 'src/app/models/forum';
+import { ForumService } from 'src/app/services/forum/forum.service';
 
 @Component({
   selector: 'app-chat',
@@ -29,6 +32,8 @@ export class ChatComponent implements OnInit {
   objectevent:Event
   artist:Artist
   cont:number = 0
+  contforum:number = 0
+  objectforum:Forum
   auxLinks:any = [];
   @Input('messages') messages: Message[]=[];
   @Input('colorBackRight') colorBackRight: string = "";
@@ -37,17 +42,20 @@ export class ChatComponent implements OnInit {
   @Input('colorFontLeft') colorFontLeft: string = "";
   dataSource: MatTableDataSource<any>;
   dataSource2: MatTableDataSource<any>;
+  dataSource3: MatTableDataSource<any>;
 
   textInput = '';
 
   constructor(private chatService: ChatService,private publicationService: PublicationService,private eventService:EventService,private ActivatedRoute:ActivatedRoute, 
-    private artistService:ArtistService) {
+    private artistService:ArtistService, private fanaticService:FanaticService, private forumService:ForumService) {
 
     this.dataSource = new MatTableDataSource<any>();
     this.dataSource2 = new MatTableDataSource<any>();
+    this.dataSource3 = new MatTableDataSource<any>();
     this.object = {} as Publication;
     this.objectevent = {} as Event;
     this.artist = {} as Artist;
+    this.objectforum = {} as Forum;
   }
 
   ngOnInit() {
@@ -75,9 +83,122 @@ export class ChatComponent implements OnInit {
       if(this.BACK_ENABLED){
         this.chatService.sendMessage(messageBack).subscribe((res: ResponseMessage) => {
           let messageReturn: Message = { text: res.responseMessage, date: new Date().toDateString(), userOwner: false}
-          if(res.responseMessage == "Se creo la publicación correctamente :D" || res.responseMessage == "Se creo el evento correctamente :D"){
+          if(res.responseMessage == "Se creo la publicación correctamente :D" || res.responseMessage == "Se creo el evento correctamente :D" || res.responseMessage == "Se creo el foro correctamente :D"){
             
-          }else{
+          }else if(res.responseMessage == "Muy bien, que tipo de usuario es?"){
+            this.artistService.checkartistid(this.idurl).subscribe((resartist: any) => {
+              if(resartist == true){
+
+                this.artistService.checkremiumartistid(this.idurl).subscribe((respremium: any) => {
+                
+                if(respremium == true){
+                  let premiummessage:Message = { text: "Es un artista con plan premium por lo cual puede crear publicaciones y eventos", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(premiummessage);
+                }else{
+                  let artistmessage:Message = { text: "Es un artista con plan free o normal por lo cual puede crear solo publicaciones", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(artistmessage);
+                }
+                
+                });
+                
+              }else{
+                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear contenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(fanmessage);
+              }
+            });
+          }else if(res.responseMessage == "Perfecto! deseas crear un evento por favor coloque el nombre del evento a crear"){
+            this.artistService.checkartistid(this.idurl).subscribe((resartist: any) => {
+              if(resartist == true){
+
+                this.artistService.checkremiumartistid(this.idurl).subscribe((respremium: any) => {
+                
+                if(respremium == true){ 
+                  this.messages.push(messageReturn);
+                }else{
+                  let artistmessage:Message = { text: "Es un artista con plan free o normal por lo cual puede crear solo publicaciones", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(artistmessage);
+                }
+                
+                });
+                
+              }else{
+                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear contenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(fanmessage);
+              }
+            });
+          }else if(res.responseMessage == "Genial! ahora coloque la descripción que desea para su nuevo evento"){
+            this.artistService.checkartistid(this.idurl).subscribe((resartist: any) => {
+              if(resartist == true){
+
+                this.artistService.checkremiumartistid(this.idurl).subscribe((respremium: any) => {
+                
+                if(respremium == true){ 
+                  this.messages.push(messageReturn);
+                }else{
+                  let artistmessage:Message = { text: "Es un artista con plan free o normal por lo cual puede crear solo publicaciones", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(artistmessage);
+                }
+                
+                });
+                
+              }else{
+                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear contenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(fanmessage);
+              }
+            });
+          }else if(res.responseMessage == "Perfecto! deseas crear una publicación por favor coloque la descripción que desea colocar"){
+            this.artistService.checkartistid(this.idurl).subscribe((resartist: any) => {
+              if(resartist == true){
+                this.messages.push(messageReturn);
+              }else{
+                  let fanmessage:Message = { text: "Es un fanatico por lo cual no puede crear contenido mil disculpas :c", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(fanmessage);
+              }
+            });
+          }else if(res.responseMessage == "Usted es el siguiente tipo de usuario"){
+            this.artistService.checkartistid(this.idurl).subscribe((resartist: any) => {
+              if(resartist == true){
+
+                this.artistService.checkremiumartistid(this.idurl).subscribe((respremium: any) => {
+                
+                if(respremium == true){
+                  let premiummessage:Message = { text: "Es un artista con plan premium", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(premiummessage);
+                }else{
+                  let artistmessage:Message = { text: "Es un artista con plan free o normal", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(artistmessage);
+                }
+                
+                });
+                
+              }else{
+                  let fanmessage:Message = { text: "Es un fanatico", date: new Date().toDateString(), userOwner: false} 
+                  this.messages.push(fanmessage);
+              }
+            });
+          }else if(res.responseMessage == "Los datos son los siguientes"){
+            this.artistService.checkartistid(this.idurl).subscribe((resartist: any) => {
+              this.fanaticService.checkfanatic(this.idurl).subscribe((resfanatic: any) => {
+              
+              
+                if(resartist == true){
+                  this.artistService.getById(this.idurl).subscribe((resobjectartist: any) => {
+                      let artistmessage:Message = { text: `Nombre: ${resobjectartist.realname}\n Apellido: ${resobjectartist.lastname}\n Email: ${resobjectartist.email}\n Followers: ${resobjectartist.artistfollowers}` , date: new Date().toDateString(), userOwner: false} 
+                      this.messages.push(artistmessage);
+                  });
+                  
+                }
+                
+                if(resfanatic == true){
+                    this.fanaticService.getById(this.idurl).subscribe((resobjectfanatic: any) => {
+                      let fanmessage:Message = { text: `Nombre: ${resobjectfanatic.realname}\n Apellido: ${resobjectfanatic.lastname}\n Email: ${resobjectfanatic.email}\n Alias: ${resobjectfanatic.fanaticalias}`, date: new Date().toDateString(), userOwner: false} 
+                      this.messages.push(fanmessage);
+                    });
+                }
+              });
+            });
+          }
+          else{
             this.messages.push(messageReturn);
           }
 
@@ -109,7 +230,17 @@ export class ChatComponent implements OnInit {
             });
           }
           //Para crear eventos
+          //Para colocar el nombre del evento
+          if(res.responseMessage == "Genial! ahora coloque la descripción que desea para su nuevo evento"){
+            console.log(messageBack)
+            console.log(res.responseMessage)
 
+            this.objectevent.name = String(messageBack.text)
+            console.log(this.objectevent)
+            console.log(this.objectevent.name)
+          }
+
+          //Para colocar su descripcion del evento
           if(res.responseMessage == "Se creo el evento correctamente :D"){
             console.log(messageBack)
             console.log(res.responseMessage)
@@ -118,9 +249,8 @@ export class ChatComponent implements OnInit {
               if(resartist == true){
                 this.artistService.checkremiumartistid(this.idurl).subscribe((respremium: any) => {
                   if(respremium == true){
-                    this.cont+=1
+
                     this.objectevent.description = String(messageBack.text)
-                    this.objectevent.name = "Event " + String(this.cont)
                     this.objectevent.ticketLink = "https://teleticket.com.pe/"
                     console.log(this.objectevent)
                     this.eventService.create(this.idurl,this.objectevent).subscribe((response: any) => {
@@ -140,6 +270,35 @@ export class ChatComponent implements OnInit {
                 alert("No es un artista por tal motivo no puede crear eventos!")
               }
 
+            });
+          }
+
+          //Para crear foros
+          //Para colocar su titulo del foro
+          if(res.responseMessage == "Perfecto! ahora coloque la descripción que desea para su nuevo foro"){
+            console.log(messageBack)
+            console.log(res.responseMessage)
+
+            this.objectforum.forumname = String(messageBack.text)
+            console.log(this.objectforum)
+            console.log(this.objectforum.forumname)
+          }
+
+
+          //Para colocar su descripcion del foro
+          if(res.responseMessage == "Se creo el foro correctamente :D"){
+            console.log(messageBack)
+            console.log(res.responseMessage)
+
+
+            this.objectforum.forumdescription = String(messageBack.text)
+            console.log(this.objectforum)
+            this.forumService.create(this.objectforum,this.idurl).subscribe((response)=> {
+                      this.dataSource3.data.push( {...response});
+                      this.dataSource3.data = this.dataSource3.data.map((o: any) => { return o; });
+                      this.messages.push(messageReturn);
+            },err=>{
+              alert("Nombre ya utilizado por otro foro, vuelva a colocar un nombre diferente")
             });
           }
 

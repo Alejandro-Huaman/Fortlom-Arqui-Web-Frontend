@@ -90,4 +90,11 @@ export class FanaticService {
         catchError(this.handleError));
   }
 
+  checkfanatic(fanaticId:number):Observable<boolean>{
+    return this.http.get<boolean>(`${this.basePath}/check/${fanaticId}`,this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
 }

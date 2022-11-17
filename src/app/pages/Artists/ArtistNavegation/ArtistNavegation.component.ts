@@ -64,4 +64,8 @@ enterForum(){
 
   }
 
+  enterAlbum(){
+    this.cd.navigate(['/HomeArtist',this.idnumber,'Albums'])
+  }
+
 }

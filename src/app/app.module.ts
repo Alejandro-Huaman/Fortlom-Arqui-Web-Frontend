@@ -52,6 +52,7 @@ import { MessageComponent } from './pages/chat/message/message.component';
 import { ChatComponent } from './pages/chat/chat/chat.component';
 import { HomeComponent } from './pages/admin/home/home.component';
 import { LoginadminComponent } from './pages/admin/loginadmin/loginadmin.component';
+import { AlbumComponent } from './pages/Artists/Album/Album.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { LoginadminComponent } from './pages/admin/loginadmin/loginadmin.compone
     DeleteespecComponent,
     LoginadminComponent,
     LoginadminComponent,
-    SetreportComponent
+    SetreportComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

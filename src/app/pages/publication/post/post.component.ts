@@ -125,7 +125,12 @@ retrievedImageUser!:string
       console.log(this.dataSource.data)
       this.studentData = this.dataSource.data;
       //this.haveInfo = true;
-      this.havePosts = true;
+      if(this.havePosts == false){
+        this.havePosts = true;
+      }else{
+        this.havePosts = false;
+      }
+      
     });
 
 

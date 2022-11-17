@@ -4,7 +4,7 @@
   }
 </style>
 <div class="center">
-  <button mat-raised-button color="primary" (click)="getPosts()" id="seeposts">See Posts</button>
+  <button mat-raised-button (click)="getPosts()" id="seeposts">See Posts</button>
 </div>
 <div *ngIf="haveInfo">
   <div *ngFor="let a of studentData">
@@ -15,5 +15,11 @@
     >
     </app-post>
     <app-comment-form [postId]="a.id"></app-comment-form>
+    <br>
+    <br>
+    <br>
   </div>
+</div>
+<div *ngIf="haveInfo == false">
+ <div style="padding-bottom: 35.5%;"></div>
 </div>

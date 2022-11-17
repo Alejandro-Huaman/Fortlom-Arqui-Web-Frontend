@@ -7,12 +7,13 @@
     width: 100%
   }
 </style>
-<mat-card class="post-form-mat-card">
-  <mat-form-field appearance="fill" class="aclass">
-    <mat-label>Write something</mat-label>
+<mat-card class="post-form-mat-card" style="border-top-right-radius: 0px; border-top-left-radius: 0px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;">
+  <mat-form-field appearance="outline" class="aclass">
+    <mat-label>Escriba un comentario para la publicación</mat-label>
     <textarea #txt matInput id="commentpost"></textarea>
   </mat-form-field>
-  <mat-card-actions align="end">
-    <button mat-button color="primary" (click)="postComment(txt)" id="postcomment">Post Comment</button>
+  <mat-card-actions align="end" style="padding-bottom: 10px;">
+    <button mat-button (click)="postComment(txt)" id="postcomment" style="background-color: black; color: white; font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Post Comment</button>
+    <div style="padding-right: 10px;"></div>
   </mat-card-actions>
 </mat-card>

@@ -26,7 +26,11 @@ export class PostListComponent implements OnInit {
       
       this.dataSource.data = response.content;
       this.studentData = this.dataSource.data;
-      this.haveInfo = true;
+      if(this.haveInfo == false){
+        this.haveInfo = true;
+      }else{
+        this.haveInfo = false;
+      }
     });
   }
 

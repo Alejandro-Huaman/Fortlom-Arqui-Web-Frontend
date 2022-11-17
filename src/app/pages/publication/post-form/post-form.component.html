@@ -17,7 +17,7 @@
     <textarea #txt matInput placeholder="Ex. It makes me feel..." id="setPost"></textarea>
   </mat-form-field>
   <mat-card-actions align="end">
-    <button mat-button (click)="multimediaDialog = true" id="buttonClip"><mat-icon>link</mat-icon></button>
+    <button mat-button (click)="OpenMultimedia()" id="buttonClip"><mat-icon>camera</mat-icon></button>
     <button mat-raised-button color="primary" (click)="postPost(txt)" value="upload" id="buttonPost">Post</button>
 
   </mat-card-actions>

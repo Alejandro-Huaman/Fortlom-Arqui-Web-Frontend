@@ -53,6 +53,9 @@ import { ChatComponent } from './pages/chat/chat/chat.component';
 import { HomeComponent } from './pages/admin/home/home.component';
 import { LoginadminComponent } from './pages/admin/loginadmin/loginadmin.component';
 import { AlbumComponent } from './pages/Artists/Album/Album.component';
+import { CreateAlbumComponent } from './pages/Artists/Album/CreateAlbum/CreateAlbum.component';
+import { CreateMusicComponent } from './pages/Artists/Album/CreateMusic/CreateMusic.component';
+import { OneAlbumComponent } from './pages/Artists/Album/OneAlbum/OneAlbum.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +106,10 @@ import { AlbumComponent } from './pages/Artists/Album/Album.component';
     LoginadminComponent,
     LoginadminComponent,
     SetreportComponent,
-    AlbumComponent
+    AlbumComponent,
+    CreateAlbumComponent,
+    CreateMusicComponent,
+    OneAlbumComponent
   ],
   imports: [
     BrowserModule,

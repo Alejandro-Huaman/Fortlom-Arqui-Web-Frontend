@@ -1,4 +1,32 @@
-<app-ArtistNavegation></app-ArtistNavegation>
-<div>
-  <h1>This is Albums artists</h1>
+<div *ngIf="whois == 'HomeArtist'">
+  <app-ArtistNavegation></app-ArtistNavegation>
 </div>
+<div *ngIf="whois == 'HomeFanatic'">
+  <app-fanaticnavigation></app-fanaticnavigation>
+</div>
+
+
+
+<div style="padding-bottom: 10px;"></div>
+<div *ngIf="whois == 'HomeArtist'">
+  <div align="end" class="mats">
+    <button mat-fab class="add" (click)="CreateAlbum()" id="add"><mat-icon>add</mat-icon></button>
+  </div>
+  <div style="padding-bottom: 10px;"></div>
+  <div align="end" class="mats">
+    <button mat-fab class="add" (click)="CreateMusic()" id="add"><mat-icon>add</mat-icon></button>
+  </div>
+</div>
+<div style="padding-bottom: 50px;"></div>
+
+<mat-grid-list cols="3" rowHeight="500px">
+  <mat-grid-tile *ngFor="let i of albumsList">
+    <button mat-button (click)="GoToOneAlbum()">
+      <mat-card>
+        <mat-card-content class="cardContent">
+          <div>{{i}}</div>
+        </mat-card-content>
+      </mat-card>
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>

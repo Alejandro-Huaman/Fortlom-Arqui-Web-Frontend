@@ -12,6 +12,13 @@ import { ActivatedRoute } from '@angular/router';
 import { Event } from 'src/app/models/event';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
+
+// import Swiper core and required modules
+import SwiperCore, { Pagination, Navigation } from "swiper";
+
+// install Swiper modules
+SwiperCore.use([Pagination, Navigation]);
+
 @Component({
   selector: 'app-ArtistEvent',
   templateUrl: './ArtistEvent.component.html',
@@ -33,6 +40,7 @@ export class ArtistEventComponent implements OnInit {
   eventbyid!:any;
   name!:string;
   lastname!:string;
+  checklink=true;
   conditionaltype : string = "Test";
   displayedColumns: string[] = ['id','EventName','EventDescription','ArtistID','Likes'];
 
@@ -71,7 +79,8 @@ export class ArtistEventComponent implements OnInit {
     let id = pod;
     this.idevent=id;
     console.log(this.idevent);
-    
+    this.getAllEvents();
+    this.getListArtist();
    
   }
 
@@ -80,7 +89,7 @@ export class ArtistEventComponent implements OnInit {
       this.dataSource.data = response.content;
       this.dataSource.paginator=this.paginator;
       this.arrayevents = response.content;
-      console.log("array")
+      console.log(this.arrayevents)
       
     });
   }
@@ -285,5 +294,48 @@ getByIdUser(id:number) {
       
 
 }
+
+
+getListArtist(){
+  this.eventService.getAll().subscribe((response: any) => {
+    this.dataSource.data = response.content;
+    this.dataSource.paginator=this.paginator;
+    this.arrayevents = response.content;
+
+    let n = this.arrayevents.length;
+
+    this.ArtistService.getAll().subscribe((response: any) => {
+      this.dataSource2.data = response;
+      this.dataSource2.paginator=this.paginator;
+      this.arrayusers = response.content;
+      console.log(this.arrayusers)
+
+      let n2 = this.arrayusers.length;
+
+      for(let i = 0; i<n2;i++){
+        if(this.arrayevents[0].ArtistID == this.arrayusers[i].id){
+          this.listusers.push(this.arrayusers[i]);
+        }
+      }
+
+      for(let i = 0; i<n;i++){
+        for(let j = 0; j<n2;j++){
+          if(this.arrayevents[i].ArtistID == this.arrayusers[j].id){
+            if(this.listusers[j] != this.arrayusers[j])this.listusers.push(this.arrayusers[j]);
+          }
+        }
+      }
+
+    });
+    console.log(this.listusers)
+  });
+}
+
+getimage(id:number){
+  this.eventService.getImageByUserId(id).subscribe((response:any)=>{
+        return response.content[0].imagenUrl
+  })
+}
+
 
 }

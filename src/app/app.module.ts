@@ -52,6 +52,7 @@ import { MessageComponent } from './pages/chat/message/message.component';
 import { ChatComponent } from './pages/chat/chat/chat.component';
 import { HomeComponent } from './pages/admin/home/home.component';
 import { LoginadminComponent } from './pages/admin/loginadmin/loginadmin.component';
+import { SwiperModule } from "swiper/angular";
 
 @NgModule({
   declarations: [
@@ -111,7 +112,7 @@ import { LoginadminComponent } from './pages/admin/loginadmin/loginadmin.compone
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    SwiperModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

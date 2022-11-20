@@ -1,36 +1,33 @@
-<mat-grid-list cols="2" rows="5" rowHeight="700px">
-
-    <mat-grid-tile>
+<body class="imagelogin">
+  <div class="cardLogin">
+    <img src="data:image/png;base64,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" alt="" class="logo">
     <form [formGroup]="loginform" class="form"  >
-    
-      <div class="form-group">
-    
-        <input formControlName="email" matInput type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" requiered >
-        <mat-error *ngIf="loginform.controls['email'].dirty && loginform.hasError('required','email')">Es requerido</mat-error>
-      </div>
-      <div class="form-group" >
-    
-        <input formControlName="password" matInput type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" required>
-        <mat-error *ngIf="loginform.controls['password'].dirty && loginform.hasError('required','password')">Es requerido</mat-error>
-    
-      </div>
-    
-    
-    
-      <button type="submit"  [disabled]="!loginform.valid" mat-raised-button color="primary" id="enter" class="but" (click)="onSubmit()">Ingresar</button>
-    
-       
-    
-    </form>
-    
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div>
-    <img src='https://cdn.discordapp.com/attachments/866839251563446272/898317609735450654/unknown.png'
-    class="imagehome">
-    
-    <h2 class="pp">“Connect with the artists you love, or with the fans you adore”</h2>
-    
+
+  <div class="form-group">
+
+    <input formControlName="email" matInput type="email" class="form-control form-control-lg" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" requiered >
+    <mat-error *ngIf="loginform.controls['email'].dirty && loginform.hasError('required','email')">Es requerido</mat-error>
+  </div>
+  <div class="form-group" >
+
+    <input formControlName="password" matInput type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" required>
+    <mat-error *ngIf="loginform.controls['password'].dirty && loginform.hasError('required','password')">Es requerido</mat-error>
+
+  </div>
+
+
+
+  <button type="submit"  [disabled]="!loginform.valid" mat-raised-button color="primary" id="enter" class="but" (click)="onSubmit()">Ingresar</button>
+
+   
+
+</form>
+
+<div>
+<b><a routerLink="/login"  style="color:#000000;" class="link">I am a Fanatic or Artist or both</a></b>
     </div>
-    </mat-grid-tile>
-    </mat-grid-list>
+
+
+  </div>
+</body>
+

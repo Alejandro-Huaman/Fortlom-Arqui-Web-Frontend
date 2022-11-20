@@ -1,34 +1,67 @@
-.imagehome{
+*{
+  padding: 0;
+  margin: 0;
+}
 
-    height:490px;
-    cursor: pointer;
+.imagelogin{
+  background-image: url(./LoginImage.png);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-position: 50% 50%;
+  padding-top: 2rem;
+  overflow: auto;
     }
-  .pp{
-  
-  font-size: 35px;
+
+
+
+
+.cardLogin{
+  max-width: 40%;
+  border-radius: 1.0rem;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  justify-items: center;
+  margin: 0 auto;
   }
-  .form{
-  
-  
-  height:60%;
-  width:65%;
-  
+
+  .cardLogin .img{
+    width: 40%;
+    height: 30%;
   }
-  .but{
-    
-    font-size: 25px;
-    color:black;
-  
-  }
-  .oo{
-  height: 200%;
-  
-  }
-  .link{
-  
-    font-size: 15px;
-    word-spacing:10px;
-  
-    line-height: 100px;
+
+  .form-control{
+    padding: 0.520rem; 
+    font-size: 1.8rem;
+    border: 0.5px solid rgb(218, 218, 218);
+    border-radius: 1.5rem;
+    outline: none;
+    transition: all .3s;
+    margin: 1rem;     
+    }
+
+.logo{
+  width: 20rem;
+  height: 20rem;
+  margin-bottom: 1rem;
+}
+
+.but{
+  font-size: 25px;
+  color:rgb(0, 0, 0);
+  background-color: rgb(212, 175, 55);
+  margin: auto;
+}
+
+.link{
+  font-size: 15px;
+  word-spacing:4px;
+  line-height: 60px;
+  margin: 2rem;
   }

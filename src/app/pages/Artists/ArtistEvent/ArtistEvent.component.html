@@ -1,139 +1,165 @@
-<app-ArtistNavegation></app-ArtistNavegation>
+<app-fanaticnavigation></app-fanaticnavigation>
 
-<div class ="padding"></div>
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>Make a Event!</mat-card-title>
-  </mat-card-header>
-  <img mat-card-image class="image" src="https://www.eventindustryshow.com/img/blog/Trabalhar-em-Eventos-11.jpg" alt="Photo of a Event">
-  <mat-card-actions>
-    <div class ="buttonspacer">
-    <button mat-raised-button class ="button" (click) = "ShowFormEvent()" id="buttonPostEvent">Post Event</button>
+<body class="imageBackground">
+<div class="Title">
+  Look for the most emotional events of the artists
+</div>
+<section>
+template: `<swiper
+  [slidesPerView]="1"
+  [spaceBetween]="30"
+  [loop]="true"
+  [pagination]="{
+    clickable: true
+  }"
+  [navigation]="true"
+  class="mySwiper"
+>
+  <ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 1</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card>
+  
+</ng-template
+  ><ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 2</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card>  
+  </ng-template
+  ><ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 3</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card></ng-template
+  ><ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 4</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card></ng-template
+  ><ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 5</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card>
+    </ng-template>
+</swiper>
+</section>
+
+<mat-card class="example-card-event2">
+  <div class="img-card"></div>
+    <div class="text-post">
+      <h1>Crea tu evento</h1>
+      <h5>Que otros fanaticos te conozcan por tu arte</h5>
     </div>
-  </mat-card-actions>
+    <mat-icon class="icon">add</mat-icon>
 </mat-card>
-<div class ="padding"></div>
-<div *ngIf = "showformevent">
-  <mat-card class="example-form-card">
-    <mat-card-header>
-      <mat-card-title>Create your Event!</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form #EventForm='ngForm'>
-        <mat-form-field>
-          <input matInput placeholder="EventName" name="EventName" required
-          [(ngModel)]="eventdata.name" id="seteventname">
-            <mat-error>Es requerido</mat-error>
-        </mat-form-field>
-        <mat-divider></mat-divider>
-        <mat-form-field>
-          <input matInput placeholder="EventDescription" name="EventDescription" required
-            [(ngModel)]="eventdata.description" id="seteventdescription">
-            <mat-error>Es requerido</mat-error>
-        </mat-form-field>
-        <mat-divider></mat-divider>
 
+<mat-grid-list cols="2" rowHeight="500px">
+  <mat-grid-tile *ngFor ="let arr of arrayevents">
+      <mat-card class="example-card-event">
+        <div class="left-column background1-left-column" *ngFor ="let arr2 of arrayusers">
+          <div *ngIf = "arr.artist.id == arr2.id" class="text">
+                    <h1>{{arr.name}}</h1>
+          </div>
+          <div fxFlex="10" *ngIf = "arr.artist.id == arr2.id">
+            <app-imageforlist [artist]="arr2.id" class="imageEvent"></app-imageforlist>
+          </div>
+        </div>
 
-
-        <mat-form-field appearance="fill" class="example-form-field">
-          <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="datepicker"   (dateInput)="setfecha($event )" id="setdate">
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-        <!-- #docregion datepicker-actions -->
-          <mat-datepicker #datepicker>
-            <mat-datepicker-actions>
-              <button mat-button matDatepickerCancel>Cancel</button>
-              <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-            </mat-datepicker-actions>
-          </mat-datepicker>
-        <!-- #enddocregion datepicker-actions -->
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="EventTicketLink" name="EventTicketLink" 
-            [(ngModel)]="eventdata.ticketLink" id="seteventticketlink">
-            <mat-error>Es requerido</mat-error>
-        </mat-form-field>
-        <mat-divider></mat-divider>
-
-
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button (click) = "NotShowFormEvent()">Cancel</button>
-      <button mat-button (click) = "ClearForm()">Clean</button>
-      <button mat-button (click) = "addEvent()" (click) = "NotShowFormEvent()" id="buttonCreateAndPost">Create and Post</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
-<div class ="padding"></div>
-  <table>
-    <tr>
-    <td>
-    <div class = "centerbuttons">
-    <button mat-raised-button class = "buttonShow" (click) = "ShowEventsArtist()" id="buttonShowAllEvents">Show All Events</button>
-    </div>
-    </td>
-    <td>
-    <div class = "centerbuttons">
-      <button mat-raised-button class = "buttonShow" (click) = "NotShowEventsArtist()" id="buttonNotShowEvents">Not Show Events</button>
-    </div>
-    </td>
-    </tr>
-  </table>
-<div class ="padding"></div>
-<div *ngIf = "showeventartist">
-  <mat-grid-list cols="1" rowHeight="1:0.5">
-    <mat-grid-tile *ngFor ="let arr of arrayevents" class="spaceshort">
-        <mat-card class="example-card-event">
-          <mat-card-header  >
-
-              <table class = "table">
-                <tr>
-                  <td class = "withoutborder">
-                  <div mat-card-avatar class="example-header-image"></div>
-                  </td>
-                  <td class = "withoutborder">
-
-                  <h1>{{arr.artist.realname}}</h1>
-                  </td>
-                  <td class = "withoutborder">
-                  <h1>{{arr.artist.lastname}}</h1>
-                  </td>
-                </tr>
-              </table>
-
-          </mat-card-header>
-          <mat-card-content>
-            <mat-card-title><h1>{{arr.name}}</h1></mat-card-title>
-            <p>{{arr.description}}</p>
-          </mat-card-content>
-          <mat-card-actions>
-            <table>
-              <tr>
-                <app-Opinion [content]="arr" [user]="idevent"></app-Opinion>
-                <td>
-                  <p>{{getfechacomment(arr.registerdate)}}</p>
-                </td>
-                
-              </tr>
-            </table>
-          </mat-card-actions>
-          <mat-card-footer>
-            
-            
-
-
-           <div *ngIf="checkislickisinevent(arr.ticketLink)">
-
+        <div class="right-column">
+          <div *ngFor ="let arr2 of arrayusers">
+            <div *ngIf = "arr.artist.id == arr2.id" class="text2">
+                <h1>{{arr2.realname}} {{arr2.lastname}}</h1>
+                <p>{{arr.description}}</p>
+            </div>
+          </div>
+          <div>
+          <app-Opinion [content]="arr" [user]="idevent" class="content"></app-Opinion>
+                <div class = "minipadding"></div>
+                <p>{{arr.eventlikes}}</p>
+          </div>
+          <div *ngIf="checkislickisinevent(arr.ticketLink)" class="link">
             <a href="{{arr.ticketLink}}" id="tikcetlink"><button mat-button><mat-icon>link</mat-icon></button></a>
+          </div>
+        </div>
+      </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
 
 
-           </div>
+<meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
 
-          </mat-card-footer>
-        </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+
+</body>

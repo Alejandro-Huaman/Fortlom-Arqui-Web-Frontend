@@ -18,4 +18,13 @@ export class NavegationComponent implements OnInit {
   LogOut(){
     this.tokenService.logOut();
   }
+  delete(){
+    this.cd.navigate(['/admin/delete'])
+  }
+  create(){
+    this.cd.navigate(['/admin/create'])
+  }
+  ban(){
+    this.cd.navigate(['/admin/ban'])
+  }
 }

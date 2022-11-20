@@ -1,5 +1,6 @@
 
 <app-navegation></app-navegation>
+<body class="imagebackground">
 <p class="text">Elije el tipo de contenido</p>
 <mat-form-field appearance="fill" class="example-full-width">
   <mat-label>Elija un contenido</mat-label>
@@ -8,12 +9,13 @@
     <mat-option value="publication">Publicación</mat-option>
   </mat-select>
 </mat-form-field>
-<button mat-raised-button (click)="change()">Ver</button>
+<button mat-raised-button (click)="change()" class="see">Ver</button>
 <div *ngIf="ispublication">
-<p class="text">Description:</p>
 <form class="example-full-width" #PublicationForm='ngForm'>
 
-<table  style="width:100%">
+<section class="container">
+<div class="cardpublication">
+  <h1>Description:</h1>
   <tr>
     <th>
       <mat-form-field  appearance="fill" class="box">
@@ -29,18 +31,21 @@
     </div>
     </th>
   </tr>
-</table>
+  </div>
+</section>
 
+<div class="publicationpost">
+      <button mat-raised-button color="primary" (click)="createevent()">Crear</button>
+  </div>
 
-<button mat-raised-button color="primary" (click)="createpublicarion()">Crear</button>
- 
 </form>
 </div>
 
 <div *ngIf="isevent">
   <form class="example-full-width" #EventForm='ngForm'>
 
-    <table  style="width:100%">
+    <section  class="container">
+      <div class="cardevent">
       <tr>
         <th>
           <mat-form-field  appearance="fill" class="box">
@@ -85,11 +90,14 @@
           </mat-form-field>
         </th>
       </tr>
-    </table>
-    
-    
-    <button mat-raised-button color="primary" (click)="createevent()">Crear</button>
+      </div>
+      
+</section>
+  <div class="eventpost">
+      <button mat-raised-button color="primary" (click)="createevent()">Crear</button>
+  </div>
      
     </form>
 
 </div>
+</body>

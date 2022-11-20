@@ -1,24 +1,72 @@
+.imagebackground{
+  background-image: url(./fondo.jpg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-position: 50% 50%;
+  padding-top: 2rem;
+  overflow: auto;
+}
+
 .text{
-    font-family: 'Roboto';
+font-family: Arial, Helvetica, sans-serif;
+color:whitesmoke;
 font-style: normal;
 font-weight: 500;
 font-size: 40px;
 line-height: 47px;
 padding: 15px;
 }
+
+.text1{
+  font-family: Arial, Helvetica, sans-serif;
+  color:black;
+  font-style: normal;
+  font-weight: 500;
+}
+
 .example-full-width{
 
-    padding: 15px;
-
+    padding: 1rem;
+    margin: 1rem;
 
 }
 table, th, td {
    
     padding: 10px;
   }
-  table {
-    border-spacing: 15px;
+
+  .container{
+    margin: 0 auto;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    max-width: 80%;
+    background-color: whitesmoke;
   }
+
   .box{
     width: 500px;
+  }
+
+  .eventpost{
+    margin: 1rem auto;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .publicationpost{
+    margin: 2.5rem auto;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .see{
+    margin-left: 1rem;
   }

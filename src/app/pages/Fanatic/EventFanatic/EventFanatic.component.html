@@ -4,21 +4,96 @@
   Look for the most emotional events of the artists
 </div>
 <section>
-  <div class="swiper mySwiper container">
-    <div class="swiper-wrapper content">
-      <div class="swiper-slide card">
-        <div class="card-content">
-          <div class="image">
-            <img src="https://conciertosperu.com.pe/wp-content/uploads/2022/11/Motteros-CP.png" alt="">
+template: `<swiper
+  [slidesPerView]="1"
+  [spaceBetween]="30"
+  [loop]="true"
+  [pagination]="{
+    clickable: true
+  }"
+  [navigation]="true"
+  class="mySwiper"
+>
+  <ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-pagination"></div>
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 1</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card>
+  
+</ng-template
+  ><ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 2</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card>  
+  </ng-template
+  ><ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 3</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card></ng-template
+  ><ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 4</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card></ng-template
+  ><ng-template swiperSlide>
+  <mat-card class="card-carousel">
+        <div class="left-column background3-left-column">
+          <div fxFlex="10">
+            <img src="https://w0.peakpx.com/wallpaper/785/642/HD-wallpaper-people-enjoying-the-concert.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="text-carousel1">
+              <h1>Evento 5</h1>
+              <p>Evento en Lima - Ate</p>
+          </div>
+        </div>
+      </mat-card>
+    </ng-template>
+</swiper>
 </section>
 
 <mat-grid-list cols="2" rowHeight="500px">
@@ -54,31 +129,26 @@
 </mat-grid-list>
 
 
-<!-- Fontawesome CDN Link-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
     <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-  var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-</script>
-
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
 </body>

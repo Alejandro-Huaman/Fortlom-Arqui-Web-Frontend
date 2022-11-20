@@ -1,0 +1,24 @@
+.image{
+    background-image: url(./image.png);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-position: 50% 50%;
+    padding-top: 2rem;
+    overflow: auto;
+}
+
+.card{
+    max-width: 40%;
+    border-radius: 1.0rem;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    background-color: whitesmoke;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    justify-items: center;
+    margin: 0 auto;
+}

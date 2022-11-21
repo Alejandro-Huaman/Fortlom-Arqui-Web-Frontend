@@ -36,7 +36,10 @@ export class CreateAlbumComponent implements OnInit {
     this.albumService.create(this.idurl,this.objectAlbum).subscribe((response: any) => {
       this.dataSource.data.push( {...response});
       this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
+      alert("Se creo el álbum correctamente")
       this.cd.navigate(["HomeArtist",this.idurl,'Albums'])
+    },err=>{
+      alert("campos mal puestos")
     });
   }
 }

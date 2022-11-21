@@ -42,7 +42,10 @@ export class CreateMusicComponent implements OnInit {
     this.musicService.create(this.albumidurl,this.objectMusic).subscribe((response: any) => {
       this.dataSource.data.push( {...response});
       this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
+      alert("Se creo la canción correctamente")
       this.cd.navigate(["HomeArtist",this.idurl,'Album',this.albumidurl])
+    },err=>{
+      alert("campos mal puestos")
     });
   }
   

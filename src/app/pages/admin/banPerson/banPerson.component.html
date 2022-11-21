@@ -1,62 +1,64 @@
 <app-navegation></app-navegation>
-<mat-form-field appearance="fill" class="example-full-width">
+<body class="imagebackground">
+  <p class="text">Elije el tipo de usuario</p>
+  <mat-form-field appearance="fill" class="example-full-width">
   <mat-label>Tipo de usuario</mat-label>
   <mat-select [(ngModel)]="selectedValue">
     <mat-option value="artist">Artista</mat-option>
     <mat-option value="fanatic">Fanatico</mat-option>
   </mat-select>
 </mat-form-field>
-<button mat-raised-button (click)="change()">Ver</button>
+<button mat-raised-button (click)="change()" class="see">Ver</button>
 <div class="erd" *ngIf="isartist">
-<table style="width:100%">
- <tr *ngFor="let element of dataSource.data">
-  <th>
-    <div mat-card-avatar class="example-header-image"></div>
-  </th>
-  <th>
-    Nombre:{{element.realname}}
-  </th>
-  <app-setreport [iduser]="element.id"></app-setreport>
+  <mat-grid-list cols="2" rowHeight="150px">
+    <mat-grid-tile *ngFor="let element of dataSource.data">
+      <div class="cardcontent">
+        <div class="textcard">
+          <th>
+            Nombre:{{element.realname}}
+          </th>
+          
+          <th>
+          <app-setreport [iduser]="element.id"></app-setreport>
+          </th>
+          
   
-  <th>
-    <button mat-raised-button (click)="banartist(43)">
-     Ban
-    </button>
+          <th>
+          <button mat-raised-button (click)="banartist(43)">
+            <mat-icon>pan_tool</mat-icon>
+          </button>
    
-  </th>
- </tr>
-
-
-
-
-
-</table>
-
+          </th>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
 
 <div class="erd" *ngIf="isfanatic">
-  <table style="width:100%">
-   <tr *ngFor="let element of dataSource.data">
-    <th>
-      <div mat-card-avatar class="example-header-image"></div>
-    </th>
-    <th>
-      Nombre:{{element.realname}}
-    </th>
-    <app-setreport [iduser]="element.id"></app-setreport>
-    
-    <th>
-      <button mat-raised-button (click)="banfanbatic(element.id)">
-       Ban
-      </button>
-     
-    </th>
-   </tr>
-  
-  
-  
-  
-  
-  </table>
+  <mat-grid-list cols="2" rowHeight="150px">
+    <mat-grid-tile *ngFor="let element of dataSource.data">
+      <div class="cardcontent">
+        <div class="textcard">
+          <th>
+            <div mat-card-avatar class="example-header-image"></div>
+          </th>
+          <th>
+            Nombre:{{element.realname}}
+          </th>
+          <th>
+            <app-setreport [iduser]="element.id"></app-setreport>
+          </th>
+          <th>
+            <button mat-raised-button (click)="banfanbatic(element.id)">
+              <mat-icon>pan_tool</mat-icon>
+            </button>
+          </th>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
   
   </div>
+</body>
+

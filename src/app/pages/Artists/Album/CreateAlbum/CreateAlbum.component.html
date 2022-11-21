@@ -1,15 +1,22 @@
 <app-ArtistNavegation></app-ArtistNavegation>
-<mat-card [formGroup]="createform">
+<div style="background-image: url('assets/images/artistlist.jpg');">
+  <div style="padding-top: 50px;"></div>
+<mat-card [formGroup]="createform" style="margin-right: auto; margin-left: auto; width: 80%; border-radius: 20px;">
   <mat-card-title>Create Album</mat-card-title>
+  <br>
   <mat-card-header>
-  <h2>Insert name:</h2>
-  <input formControlName="name" class="con" [(ngModel)]="objectAlbum.name" type="name" placeholder="Album Name" required id="albumname" maxlength="20">
-        <mat-error *ngIf="createform.controls['name'].dirty && createform.hasError('required','name')">Es requerido</mat-error>
-  
+  <h2 style="padding-top: 20px;">Insert name:</h2>
+  <div style="padding-right: 20px;"></div>
+      <mat-form-field appearance="outline" style="width: 53%;">
+            <mat-label>Album name</mat-label>
+            <input matInput formControlName="name" class="con" [(ngModel)]="objectAlbum.name" type="name" required id="albumname" maxlength="20">
+            <mat-error *ngIf="createform.controls['name'].dirty && createform.hasError('required') || createform.controls['name'].invalid">Es requerido el nombre</mat-error>
+      </mat-form-field>
   </mat-card-header>
-  <mat-form-field appearance="fill" class="area" >
-    <mat-label>Description </mat-label>
+  <mat-form-field appearance="outline" class="area">
+    <mat-label>Album description</mat-label>
     <textarea formControlName="description" [(ngModel)]="objectAlbum.description" matInput type="description" id="forumdescription" maxlength="200"></textarea>
+    <mat-error *ngIf="createform.controls['description'].dirty && createform.hasError('required') || createform.controls['description'].invalid">Es requerido la descripcion</mat-error>
   </mat-form-field>
   <mat-card-footer align="end">
   
@@ -21,3 +28,5 @@
   
   
 </mat-card>
+<div style="padding-bottom: 24%;"></div>
+</div>

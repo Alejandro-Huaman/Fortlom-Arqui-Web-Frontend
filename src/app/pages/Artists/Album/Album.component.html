@@ -5,26 +5,33 @@
   <app-fanaticnavigation></app-fanaticnavigation>
 </div>
 
+<div class="basic-container" style="background-image: url('assets/images/artistlist.jpg');">
 
-
-<div style="padding-bottom: 10px;"></div>
-<div *ngIf="whois == 'HomeArtist'">
-  <div align="end" class="mats">
-    <button mat-fab class="add" (click)="CreateAlbum()" id="add"><mat-icon>add</mat-icon></button>
-  </div>
   <div style="padding-bottom: 10px;"></div>
-</div>
-<div style="padding-bottom: 50px;"></div>
+  <div class="introTitle">
+    Come, see and hear all the albums in Fortlom! 
+  </div>
 
-<mat-grid-list cols="3" rowHeight="500px">
-  <mat-grid-tile *ngFor="let album of dataSource.data">
-    <button mat-button (click)="GoToOneAlbum(album.id)">
-      <mat-card>
-        <mat-card-content class="cardContent">
-          <mat-card-title>{{album.name}}</mat-card-title>
-          <div>{{album.description}}</div>
-        </mat-card-content>
-      </mat-card>
-    </button>
-  </mat-grid-tile>
-</mat-grid-list>
+  <div *ngIf="whois == 'HomeArtist'">
+    <div align="end" class="mats">
+      <button mat-fab class="add" (click)="CreateAlbum()" id="add" style="background-color: goldenrod;"><mat-icon>add</mat-icon></button>
+    </div>
+    <div style="padding-bottom: 10px;"></div>
+  </div>
+  <div style="padding-bottom: 80px;"></div>
+  <mat-grid-list cols="3" rowHeight="500px">
+    <mat-grid-tile *ngFor="let album of dataSource.data">
+      <button mat-button (click)="GoToOneAlbum(album.id)">
+        <mat-card style="border-radius: 20px;">
+          <mat-card-content class="cardContent">
+            <mat-card-title>{{album.name}}</mat-card-title>
+            <div>{{album.description}}</div>
+            <br>
+            <img src="assets/images/album.jpg">
+          </mat-card-content>
+        </mat-card>
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div style="padding-bottom: 20px;"></div>
+</div>

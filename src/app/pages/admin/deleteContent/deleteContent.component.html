@@ -1,6 +1,7 @@
 
 <app-navegation></app-navegation>
-<p class="text">Elije el tipo de contenido</p>
+<body class="imagebackground">
+<p class="text">Elije el tipo de contenido a eliminar</p>
 <mat-form-field appearance="fill" class="example-full-width">
   <mat-label>Elija un contenido</mat-label>
   <mat-select [(ngModel)]="selectedValue">
@@ -10,30 +11,37 @@
 </mat-form-field>
 <button mat-raised-button (click)="change()">Ver</button>
 <div class="erd" *ngIf="isevent">
-<table style="width:100%">
- <tr  *ngFor="let element of dataSource.data">
-  <th>
-    Nombre:{{element.name}}
-  </th>
-  <th>
-    Autor:{{element.artist.realname}}
-  </th>
-  <th>
-    description:{{element.description}}
-  </th>
-  <th>
-    <button mat-raised-button (click)="select(element.id)">
-      <mat-icon>remove_red_eye</mat-icon>
-    </button>
+  <mat-grid-list cols="2" rowHeight="150px">
+    <mat-grid-tile *ngFor="let element of dataSource.data">
+      <div class="cardcontent">
+        <div class="textcard">
+          <th>
+            Nombre:{{element.name}}
+          </th>
+          <th>
+            Autor:{{element.artist.realname}}
+          </th>
+          <th>
+            description:{{element.description}}
+          </th>
+          <th>
+            <button mat-raised-button (click)="select(element.id)">
+              <mat-icon>remove_red_eye</mat-icon>
+            </button>
    
-  </th>
- </tr>
-</table>
+          </th>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
 </div>
 
 <div class="erd" *ngIf="ispublication">
-  <table style="width:100%">
-   <tr  *ngFor="let element of dataSource.data">
+  <mat-grid-list cols="2" rowHeight="150px">
+    <mat-grid-tile *ngFor="let element of dataSource.data">
+      <div class="cardcontent">
+        <div class="textcard">
     <th>
       Autor:{{element.artist.realname}}
     </th>
@@ -46,6 +54,10 @@
       </button>
      
     </th>
-   </tr>
-  </table>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
   </div>
+</body>

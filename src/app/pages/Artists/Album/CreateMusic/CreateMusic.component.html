@@ -9,7 +9,7 @@
   </mat-card-title>
   <mat-card-header>
   <h2>Insert name:</h2>
-  <input formControlName="name" class="con" [(ngModel)]="objectMusic.name" type="name"  id="exampleInputalias" placeholder="Forum Name" required id="forumname">
+  <input formControlName="name" class="con" [(ngModel)]="objectMusic.name" type="name" placeholder="Music Name" required id="musicname" maxlength="20">
         <mat-error *ngIf="createform.controls['name'].dirty && createform.hasError('required','name')">Es requerido</mat-error>
         <div style="padding-right: 15%;"></div>
         <mat-form-field appearance="outline" style="height: 30px;">

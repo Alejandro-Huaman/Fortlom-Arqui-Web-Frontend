@@ -3,13 +3,13 @@
   <mat-card-title>Create Album</mat-card-title>
   <mat-card-header>
   <h2>Insert name:</h2>
-  <input formControlName="name" class="con" [(ngModel)]="objectAlbum.name" type="name"  id="exampleInputalias" placeholder="Forum Name" required id="forumname">
+  <input formControlName="name" class="con" [(ngModel)]="objectAlbum.name" type="name" placeholder="Album Name" required id="albumname" maxlength="20">
         <mat-error *ngIf="createform.controls['name'].dirty && createform.hasError('required','name')">Es requerido</mat-error>
   
   </mat-card-header>
   <mat-form-field appearance="fill" class="area" >
     <mat-label>Description </mat-label>
-    <textarea formControlName="description" [(ngModel)]="objectAlbum.description" matInput type="description" id="forumdescription"></textarea>
+    <textarea formControlName="description" [(ngModel)]="objectAlbum.description" matInput type="description" id="forumdescription" maxlength="200"></textarea>
   </mat-form-field>
   <mat-card-footer align="end">
   

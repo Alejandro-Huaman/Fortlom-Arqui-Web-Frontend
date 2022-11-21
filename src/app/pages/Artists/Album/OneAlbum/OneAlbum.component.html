@@ -6,7 +6,30 @@
 </div>
 <div style="padding-bottom: 10px;"></div>
 <div>
+  <div *ngIf="whois == 'HomeArtist'">
+    <div align="end" class="mats">
+      <button mat-fab class="add" (click)="CreateMusic()" id="add"><mat-icon>add</mat-icon></button>
+    </div>
+    <div style="padding-bottom: 10px;"></div>
+  </div>
   <mat-card>
-    <mat-card-title>Album 1</mat-card-title>
+    <mat-card-title>Album #</mat-card-title>
+    <div>Album Description</div>
   </mat-card>
+  <div style="padding-bottom: 20px;"></div>
+  
+  <mat-grid-list cols="3" rowHeight="500px">
+    <mat-grid-tile *ngFor="let music of dataSource.data">
+        <mat-card>
+          <mat-card-content class="cardContent">
+            <mat-card-title style="text-align: center;">{{music.name}}</mat-card-title>
+            <a [href]="music.musicUrl">
+              <button mat-button>
+                <mat-icon>link</mat-icon>              
+              </button>
+            </a>
+          </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

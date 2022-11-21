@@ -13,18 +13,16 @@
     <button mat-fab class="add" (click)="CreateAlbum()" id="add"><mat-icon>add</mat-icon></button>
   </div>
   <div style="padding-bottom: 10px;"></div>
-  <div align="end" class="mats">
-    <button mat-fab class="add" (click)="CreateMusic()" id="add"><mat-icon>add</mat-icon></button>
-  </div>
 </div>
 <div style="padding-bottom: 50px;"></div>
 
 <mat-grid-list cols="3" rowHeight="500px">
-  <mat-grid-tile *ngFor="let i of albumsList">
-    <button mat-button (click)="GoToOneAlbum()">
+  <mat-grid-tile *ngFor="let album of dataSource.data">
+    <button mat-button (click)="GoToOneAlbum(album.id)">
       <mat-card>
         <mat-card-content class="cardContent">
-          <div>{{i}}</div>
+          <mat-card-title>{{album.name}}</mat-card-title>
+          <div>{{album.description}}</div>
         </mat-card-content>
       </mat-card>
     </button>

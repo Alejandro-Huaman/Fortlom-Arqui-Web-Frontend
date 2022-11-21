@@ -1,20 +1,34 @@
 <app-ArtistNavegation></app-ArtistNavegation>
-<mat-card>
-  <mat-card-title>Create Music</mat-card-title>
+<mat-card [formGroup]="createform">
+  <mat-card-title>
+    <div style="display: inline-flex; width: 100%;">
+      Create Music 
+      <div style="padding-right: 70%;"></div>
+        Category
+    </div>
+  </mat-card-title>
   <mat-card-header>
   <h2>Insert name:</h2>
-  <input class="con" type="name"  id="exampleInputalias" placeholder="Forum Name" required id="forumname">
-        <mat-error>Es requerido</mat-error>
-  
+  <input formControlName="name" class="con" [(ngModel)]="objectMusic.name" type="name"  id="exampleInputalias" placeholder="Forum Name" required id="forumname">
+        <mat-error *ngIf="createform.controls['name'].dirty && createform.hasError('required','name')">Es requerido</mat-error>
+        <div style="padding-right: 15%;"></div>
+        <mat-form-field appearance="outline" style="height: 30px;">
+          <mat-label>Music category</mat-label>
+          <mat-select formControlName="category" [(ngModel)]="objectMusic.category" placeholder="Music category">
+            <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="createform.controls['category'].dirty && createform.hasError('required') || createform.controls['category'].invalid">Es requerido la categoria</mat-error>
+        </mat-form-field> 
   </mat-card-header>
+  <div style="padding-bottom: 10px;"></div>
   <mat-form-field appearance="fill" class="area" >
-    <mat-label>Description </mat-label>
-    <textarea matInput type="description" id="forumdescription"></textarea>
+    <mat-label>Music Url </mat-label>
+    <input matInput formControlName="musicurl" [(ngModel)]="objectMusic.musicUrl" id="musicurl">
   </mat-form-field>
   <mat-card-footer align="end">
   
   
-  <button mat-button class="but" (click)="CrearMusica()" id="createforum">Create</button>
+  <button mat-button class="but" [disabled]="!createform.valid" (click)="CrearMusica()" id="createforum">Create</button>
   
   
   </mat-card-footer>

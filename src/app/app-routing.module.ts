@@ -44,7 +44,7 @@ const routes: Routes = [
   {path: 'HomeArtist/:id/ConfigureArtist',component:ConfigurationArtistComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
   {path: 'HomeArtist/:id/Albums',component:AlbumComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
   {path: 'HomeArtist/:id/CreateAlbums',component:CreateAlbumComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
-  {path: 'HomeArtist/:id/CreateMusics',component:CreateMusicComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
+  {path: 'HomeArtist/:id/Album/:albumid/CreateMusics',component:CreateMusicComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
   {path: 'HomeArtist/:id/Album/:albumid',component:OneAlbumComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
 
 

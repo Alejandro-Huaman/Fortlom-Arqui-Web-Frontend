@@ -1,20 +1,20 @@
 <app-ArtistNavegation></app-ArtistNavegation>
-<mat-card>
+<mat-card [formGroup]="createform">
   <mat-card-title>Create Album</mat-card-title>
   <mat-card-header>
   <h2>Insert name:</h2>
-  <input class="con"  type="name"  id="exampleInputalias" placeholder="Forum Name" required id="forumname">
-        <mat-error>Es requerido</mat-error>
+  <input formControlName="name" class="con" [(ngModel)]="objectAlbum.name" type="name"  id="exampleInputalias" placeholder="Forum Name" required id="forumname">
+        <mat-error *ngIf="createform.controls['name'].dirty && createform.hasError('required','name')">Es requerido</mat-error>
   
   </mat-card-header>
   <mat-form-field appearance="fill" class="area" >
     <mat-label>Description </mat-label>
-    <textarea matInput type="description" id="forumdescription"></textarea>
+    <textarea formControlName="description" [(ngModel)]="objectAlbum.description" matInput type="description" id="forumdescription"></textarea>
   </mat-form-field>
   <mat-card-footer align="end">
   
   
-  <button mat-button class="but" (click)="CrearAlbum()" id="createforum">Create</button>
+  <button mat-button class="but" [disabled]="!createform.valid" (click)="CrearAlbum()" id="createforum">Create</button>
   
   
   </mat-card-footer>

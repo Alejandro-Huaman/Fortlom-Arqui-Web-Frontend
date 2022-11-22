@@ -108,7 +108,7 @@ import { ArtistEventCreateComponent } from './pages/Artists/artist-event-create/
     LoginadminComponent,
     LoginadminComponent,
     SetreportComponent,
-    ArtistEventCreateComponent
+    ArtistEventCreateComponent,
     AlbumComponent,
     CreateAlbumComponent,
     CreateMusicComponent,

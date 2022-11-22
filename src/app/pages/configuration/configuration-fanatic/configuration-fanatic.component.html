@@ -3,118 +3,127 @@
 
 
 <app-fanaticnavigation></app-fanaticnavigation>
-<table class = "table">
-  <tr>
-    <td class = "withoutborder">
-    <mat-card class="example-card">
-      <table class = "table">
-      <tr class = "textstyle">
-        <td class = "withoutborder">
-        <mat-card-header class = "centeravatar">
-          <div mat-card-avatar class="example-header-image">
-            <img style="height: 200px; width: 100%; display: block;" [src]="retrievedImage" alt="Card image">
-          </div>
-        </mat-card-header>
-        <mat-card-content>
-        <div class ="minipadding"></div>
-        <input style="display:none" type="file" id="my-file" (change)="onFileChanged($event)">
-        <button mat-button type="button" onclick="document.getElementById('my-file').click()"><mat-icon>add_circle</mat-icon></button>
-        <mat-card-title class = "buttoncenter">{{userdata.realname}}</mat-card-title>
-        <div class ="minipadding"></div>
-        <mat-card-title class = "buttoncenter">{{userdata.lastname}}</mat-card-title>
-        </mat-card-content>
-        </td>
-        <td class = "withoutborder">
-          <mat-card-header>
-            <mat-card-title>Genders</mat-card-title>
+<div class="background">
+  <table class = "table">
+    <tr>
+      <td class = "withoutborder">
+      <mat-card class="example-card">
+        <table class = "table">
+        <tr class = "textstyle">
+          <td class = "withoutborder">
+          <mat-card-header class = "centeravatar">
+            <div mat-card-avatar class="example-header-image">
+                <img style="height: 100%; width: 100%; display: block; border-radius: 50%;" [src]="retrievedImage" alt="Card image">
+              <div>
+                <mat-card-title class = "buttoncenter">{{userdata.realname}}</mat-card-title>
+              <div class ="minipadding"></div>
+              <mat-card-title class = "buttoncenter">{{userdata.lastname}}</mat-card-title>
+              </div>
+            </div>
           </mat-card-header>
           <mat-card-content>
-            <div *ngFor = "let arr of arraygenders">
-              <button mat-raised-button class = "button">{{arr}}</button>
-              <div class = "minipadding"></div>
-            </div>
-            <button mat-raised-button class = "button" (click) = "AddGenders()">Add</button>
+          <div class ="minipadding"></div>
+          <input style="display:none" type="file" id="my-file" (change)="onFileChanged($event)">
+          <div class="loadFileBtn">
+            <button mat-button type="button" class onclick="document.getElementById('my-file').click()"><mat-icon class="iconFileBtn">add_circle</mat-icon></button>
+          </div>
           </mat-card-content>
-        </td>
-      </tr>
-      </table>
-    </mat-card>
-    </td>
-  </tr>
-  <tr>
-    <td class = "withoutborder">
-      <table class ="table">
-        <tr>
-          <td class = "withoutborder">
-              <h1>Notification Push</h1>
-              <h2>Likes</h2>
-              <mat-selection-list>
-                <mat-list-option>Off</mat-list-option>
-                <mat-list-option>From people I follow</mat-list-option>
-                <mat-list-option>From everyone</mat-list-option>
-              </mat-selection-list>
-              <div class ="minipadding"></div>
-              <h2>Comments</h2>
-              <mat-selection-list>
-                <mat-list-option>Off</mat-list-option>
-                <mat-list-option>From people I follow</mat-list-option>
-                <mat-list-option>From everyone</mat-list-option>
-              </mat-selection-list>
           </td>
-          <td class = "withoutborder">
-            <h1>Change Password</h1>
-            <form #UserForm='ngForm'>
-              <h2>Past password:</h2>
-              <mat-form-field>
-                <input matInput placeholder="Insert past password" name="pastpassword" required id="pastpassword">
-                <mat-error>Is required</mat-error>
-              </mat-form-field>
-              <mat-divider></mat-divider>
-              <h2>New password:</h2>
-              <mat-form-field>
-                <input matInput placeholder="Insert new password" name="newpassword" required id="newpassword"
-                [(ngModel)]="userdata.password">
-                <mat-error>Is required</mat-error>
-              </mat-form-field>
-              <mat-divider></mat-divider>
-              <h2>Confirm password:</h2>
-              <mat-form-field>
-                <input matInput placeholder="Insert new password again" name="newpassword" required id="newpasswordagain">
-                <mat-error>Is required</mat-error>
-              </mat-form-field>
-              <mat-divider></mat-divider>
-              <button mat-raised-button class="button" (click) = "updatepassword()" id="updatepassword">Change password</button>
-            </form>
-          </td>
-          <td class = "withoutborder">
-            <h1>Edit Profile</h1>
-            <form #UserForm='ngForm'>
-              <h2>Name:</h2>
-              <mat-form-field>
-                <input matInput placeholder="Insert new name" name="name" required
-                [(ngModel)]="userdata.realname" id="inputname">
-                <mat-error>Is required</mat-error>
-              </mat-form-field>
-              <mat-divider></mat-divider>
-              <h2>Lastname:</h2>
-              <mat-form-field>
-                <input matInput placeholder="Insert new lastname" name="lastname" required
-                [(ngModel)]="userdata.lastname" id="inputlastname">
-                <mat-error>Is required</mat-error>
-              </mat-form-field>
-              <mat-divider></mat-divider>
-              <h2>Email:</h2>
-              <mat-form-field>
-                <input matInput placeholder="Insert new email" name="email" required
-                [(ngModel)]="userdata.email" id="inputemail">
-                <mat-error>Is required</mat-error>
-              </mat-form-field>
-              <mat-divider></mat-divider>
-              <button mat-raised-button class="button" (click) = "updateUser()" id="buttonchange">Change profile</button>
-            </form>
-          </td>
+
+          <!--<td class = "genderTable">
+            <mat-card-content>
+              <mat-card-title>
+                Genres
+              </mat-card-title>
+              <button mat-raised-button class = "button" (click) = "AddGenders()" style="margin-bottom: 5px;">Add</button>
+                <mat-grid-list cols="3" rowHeight="50px">
+                  <mat-grid-tile *ngFor = "let arr of arraygenders">
+                    <button mat-raised-button class = "button">{{arr}} </button>
+                  </mat-grid-tile>
+                </mat-grid-list>
+                <div class = "minipadding"></div>
+            </mat-card-content>
+          </td>-->
         </tr>
-      </table>
-    </td>
-  </tr>
-</table>
+        </table>
+      </mat-card>
+      </td>
+    </tr>
+    <tr class="optionsProfile">
+      <td class = "withoutborder2">
+        <table class ="table">
+          <tr>
+            <td class = "withoutborder2" >
+                <h1 class="header" style="text-decoration: underline;">Notification Push</h1>
+                <h2 class="header">Likes</h2>
+                <mat-selection-list style="color: white;">
+                  <mat-list-option class="header" >Off</mat-list-option>
+                  <mat-list-option class="header">From people I follow</mat-list-option>
+                  <mat-list-option class="header">From everyone</mat-list-option>
+                </mat-selection-list>
+                <div class ="minipadding"></div>
+                <h2 class="header">Comments</h2>
+                <mat-selection-list>
+                  <mat-list-option class="header">Off</mat-list-option>
+                  <mat-list-option class="header">From people I follow</mat-list-option>
+                  <mat-list-option class="header">From everyone</mat-list-option>
+                </mat-selection-list>
+            </td>
+            <td class = "withoutborder2">
+              <h1 class="header" style="text-decoration: underline;">Change Password</h1>
+              <form #UserForm='ngForm'>
+                <h2 class="header">Past password:</h2>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Insert past password" name="pastpassword" required id="pastpassword">
+                  <mat-error>Is required</mat-error>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <h2 class="header">New password:</h2>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Insert new password" name="newpassword" required id="newpassword"
+                  [(ngModel)]="userdata.password">
+                  <mat-error>Is required</mat-error>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <h2 class="header">Confirm password:</h2>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Insert new password again" name="newpassword" required id="newpasswordagain">
+                  <mat-error>Is required</mat-error>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <button mat-raised-button class="button" (click) = "updatepassword()" id="updatepassword" style="background-color: #cca027; font-family: Arial, Helvetica, sans-serif; color: white;">Change password</button>
+              </form>
+            </td>
+            <td class = "withoutborder2">
+              <h1 class="header" style="text-decoration: underline;">Edit Profile</h1>
+              <form #UserForm='ngForm'>
+                <h2 class="header">Name:</h2>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Insert new name" name="name" required
+                  [(ngModel)]="userdata.realname" id="inputname">
+                  <mat-error>Is required</mat-error>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <h2 class="header">Lastname:</h2>
+                <mat-form-field appearance="outline">
+                  <input matInput placeholder="Insert new lastname" name="lastname" required
+                  [(ngModel)]="userdata.lastname" id="inputlastname">
+                  <mat-error>Is required</mat-error>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <h2 class="header">Email:</h2>
+                <mat-form-field appearance="outline" class="header">
+                  <input matInput placeholder="Insert new email" name="email" required
+                  [(ngModel)]="userdata.email" id="inputemail">
+                  <mat-error>Is required</mat-error>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <button mat-raised-button class="button" (click) = "updateUser()" id="buttonchange" style="background-color: #cca027; font-family: Arial, Helvetica, sans-serif; color: white;">Change profile</button>
+              </form>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

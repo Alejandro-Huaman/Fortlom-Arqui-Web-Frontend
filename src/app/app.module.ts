@@ -58,6 +58,7 @@ import { CreateMusicComponent } from './pages/Artists/Album/CreateMusic/CreateMu
 import { OneAlbumComponent } from './pages/Artists/Album/OneAlbum/OneAlbum.component';
 import { SwiperModule } from "swiper/angular";
 import { ArtistEventCreateComponent } from './pages/Artists/artist-event-create/artist-event-create.component';
+import { UpgradeArtistDialogComponent } from './pages/configuration/configuration-artist/upgrade-artist-dialog/upgrade-artist-dialog.component';
 
 @NgModule({
   declarations: [
@@ -108,11 +109,12 @@ import { ArtistEventCreateComponent } from './pages/Artists/artist-event-create/
     LoginadminComponent,
     LoginadminComponent,
     SetreportComponent,
-    ArtistEventCreateComponent
+    ArtistEventCreateComponent,
     AlbumComponent,
     CreateAlbumComponent,
     CreateMusicComponent,
-    OneAlbumComponent
+    OneAlbumComponent,
+    UpgradeArtistDialogComponent
   ],
   imports: [
     BrowserModule,

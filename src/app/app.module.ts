@@ -56,6 +56,7 @@ import { AlbumComponent } from './pages/Artists/Album/Album.component';
 import { CreateAlbumComponent } from './pages/Artists/Album/CreateAlbum/CreateAlbum.component';
 import { CreateMusicComponent } from './pages/Artists/Album/CreateMusic/CreateMusic.component';
 import { OneAlbumComponent } from './pages/Artists/Album/OneAlbum/OneAlbum.component';
+import { SwiperModule } from "swiper/angular";
 
 @NgModule({
   declarations: [
@@ -119,7 +120,7 @@ import { OneAlbumComponent } from './pages/Artists/Album/OneAlbum/OneAlbum.compo
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    SwiperModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

@@ -5,6 +5,9 @@
 <div *ngIf="isHidden">
 <app-ArtistNavegation></app-ArtistNavegation>
 </div>
+<div class="basic-container">
+  
+  <div class="Cardforum">
 <mat-card [formGroup]="createform">
   <mat-card-title>Create Forum</mat-card-title>
   <mat-card-header>
@@ -17,13 +20,13 @@
     <mat-label>Description </mat-label>
     <textarea formControlName="description" [(ngModel)]="Forum.forumdescription" matInput type="description" id="forumdescription"></textarea>
   </mat-form-field>
-  <mat-card-footer align="end">
   
-  
-  <button mat-button class="but" [disabled]="!createform.valid" (click)="crearforo()" id="createforum">Create</button>
-  
-  
-  </mat-card-footer>
+  <mat-divider></mat-divider>
+  <mat-card-actions align="end">
+    <button mat-button [disabled]="!createform.valid" (click)="crearforo()" id="createforum">CREATE</button>
+  </mat-card-actions>
   
   
   </mat-card>
+  </div>
+</div>

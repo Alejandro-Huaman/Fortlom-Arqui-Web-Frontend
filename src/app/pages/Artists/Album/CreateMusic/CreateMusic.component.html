@@ -1,0 +1,45 @@
+<app-ArtistNavegation></app-ArtistNavegation>
+<div style="background-image: url('assets/images/artistlist.jpg');">
+<div style="padding-top: 50px;"></div>
+<mat-card [formGroup]="createform" style="margin-right: auto; margin-left: auto; width: 80%; border-radius: 20px;">
+  <mat-card-title>
+    <div style="display: inline-flex; width: 100%;">
+      Create Music 
+      <div style="padding-right: 70%;"></div>
+        Category
+    </div>
+  </mat-card-title>
+  <br>
+  <mat-card-header>
+  <h2 style="padding-top: 20px;">Insert name:</h2>
+  <div style="padding-right: 20px;"></div>
+      <mat-form-field appearance="outline" style="width: 53%;">
+        <mat-label>Music name</mat-label> 
+        <input matInput formControlName="name" class="con" [(ngModel)]="objectMusic.name" type="name" required id="musicname" maxlength="20">
+        <mat-error *ngIf="createform.controls['name'].dirty && createform.hasError('required') || createform.controls['name'].invalid">Es requerido el nombre</mat-error>
+      </mat-form-field>  
+        <div style="padding-right: 12%;"></div>
+        <mat-form-field appearance="outline">
+          <mat-label>Music category</mat-label>
+          <mat-select formControlName="category" [(ngModel)]="objectMusic.category">
+            <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="createform.controls['category'].dirty && createform.hasError('required') || createform.controls['category'].invalid">Es requerido la categoria</mat-error>
+        </mat-form-field> 
+  </mat-card-header>
+  <div style="padding-bottom: 10px;"></div>
+  <mat-form-field appearance="outline" class="area" >
+    <mat-label>Music Url</mat-label>
+    <input matInput formControlName="musicurl" [(ngModel)]="objectMusic.musicUrl" id="musicurl">
+    <mat-error *ngIf="createform.controls['musicurl'].dirty && createform.hasError('required') || createform.controls['musicurl'].invalid">Es requerido el url</mat-error>
+  </mat-form-field>
+  <mat-card-footer align="end">
+  
+  
+  <button mat-button class="but" [disabled]="!createform.valid" (click)="CrearMusica()" id="createforum">Create</button>
+  
+  
+  </mat-card-footer>
+</mat-card>
+<div style="padding-bottom: 24%;"></div>
+</div>

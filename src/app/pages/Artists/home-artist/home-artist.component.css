@@ -19,3 +19,7 @@
    background-color:black;
   
   }
+  .responsive {
+    width: 100%;
+    height: auto;
+  }

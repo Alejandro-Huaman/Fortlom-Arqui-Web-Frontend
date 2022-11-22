@@ -1,0 +1,46 @@
+<div *ngIf="whois == 'HomeArtist'">
+  <app-ArtistNavegation></app-ArtistNavegation>
+</div>
+<div *ngIf="whois == 'HomeFanatic'">
+  <app-fanaticnavigation></app-fanaticnavigation>
+</div>
+<div class="basic-container" style="background-image: url('assets/images/artistlist.jpg');">
+  <div style="padding-bottom: 10px;"></div>
+  <div *ngIf="whois == 'HomeArtist'">
+    <div align="end" class="mats">
+      <button mat-fab class="add" (click)="CreateMusic()" id="add" style="background-color: goldenrod;"><mat-icon>add</mat-icon></button>
+    </div>
+    <div style="padding-bottom: 10px;"></div>
+  </div>
+  
+  <mat-card style="margin-right: auto; margin-left: 132px; width: 30%; border-radius: 20px; text-align: center;">
+    <mat-card-title>Album #</mat-card-title>
+    <div>Album Description</div>
+    <br>
+    <mat-card-content>
+      <img src="assets/images/album.jpg">
+    </mat-card-content>
+  </mat-card>
+  <div class="introTitle">
+    Music is love! 
+  </div>
+  <div style="padding-bottom: 20px;"></div>
+  
+  <mat-grid-list cols="3" rowHeight="500px">
+    <mat-grid-tile *ngFor="let music of dataSource.data">
+        <mat-card style="border-radius: 20px;">
+          <mat-card-content class="cardContent">
+            <mat-card-title style="text-align: center;">{{music.name}}</mat-card-title>
+            <img src="assets/images/music.jpg" style="width: 200px;">
+            <br>
+            <br>
+            <a [href]="music.musicUrl">
+              <button mat-raised-button style="color: white; background-color: black;">
+                Hear Music!              
+              </button>
+            </a>
+          </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

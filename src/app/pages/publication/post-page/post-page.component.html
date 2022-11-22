@@ -6,8 +6,10 @@
   <div *ngIf="!isHidden">
     <app-ArtistNavegation></app-ArtistNavegation>
   </div>
-  <div *ngIf="!isHidden">
-  <app-post-form></app-post-form>
+  <div style="background-image: url('assets/images/background_posts.jpg');">
+    <div *ngIf="!isHidden">
+      <app-post-form></app-post-form>
+      </div>
+      <br/>
+      <app-post-list></app-post-list>
   </div>
-  <br/>
-  <app-post-list></app-post-list>

@@ -28,6 +28,10 @@ import { SendEmailComponent } from './pages/ForgotPassword/send-email/send-email
 import { ChatComponent } from './pages/chat/chat/chat.component';
 import { HomeComponent } from './pages/admin/home/home.component';
 import { BanPersonComponent } from './pages/admin/banPerson/banPerson.component';
+import { AlbumComponent } from './pages/Artists/Album/Album.component';
+import { CreateAlbumComponent } from './pages/Artists/Album/CreateAlbum/CreateAlbum.component';
+import { CreateMusicComponent } from './pages/Artists/Album/CreateMusic/CreateMusic.component';
+import { OneAlbumComponent } from './pages/Artists/Album/OneAlbum/OneAlbum.component';
 
 const routes: Routes = [
 
@@ -38,6 +42,10 @@ const routes: Routes = [
   {path:'HomeArtist/:id/Event',component:ArtistEventComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
   {path: 'HomeArtist/:id/posts',component:PostPageComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
   {path: 'HomeArtist/:id/ConfigureArtist',component:ConfigurationArtistComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
+  {path: 'HomeArtist/:id/Albums',component:AlbumComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
+  {path: 'HomeArtist/:id/CreateAlbums',component:CreateAlbumComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
+  {path: 'HomeArtist/:id/Album/:albumid/CreateMusics',component:CreateMusicComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
+  {path: 'HomeArtist/:id/Album/:albumid',component:OneAlbumComponent,canActivate: [ArtistGuard], data: { expectedRol: ['Role_Artist','Role_Upgrade_Artist'] }},
 
 
   {path:'HomeFanatic/:id',component:HomeFanaticComponent,canActivate: [FanaticGuard], data: { expectedRol: ['Role_Fanatic'] }},
@@ -48,6 +56,8 @@ const routes: Routes = [
   {path:'HomeFanatic/:id/artists',component:ArtistListComponent,canActivate: [FanaticGuard], data: { expectedRol: ['Role_Fanatic'] }},
   {path: 'HomeFanatic/:id/posts',component:PostPageComponent,canActivate: [FanaticGuard], data: { expectedRol: ['Role_Fanatic'] }},
   {path:'HomeFanatic/:id/ConfigureFanatic',component:ConfigurationFanaticComponent,canActivate: [FanaticGuard], data: { expectedRol: ['Role_Fanatic'] }},
+  {path: 'HomeFanatic/:id/ArtistAlbums',component:AlbumComponent,canActivate: [FanaticGuard], data: { expectedRol: ['Role_Fanatic'] }},
+  {path: 'HomeFanatic/:id/ArtistAlbum/:albumid',component:OneAlbumComponent,canActivate: [FanaticGuard], data: { expectedRol: ['Role_Fanatic'] }},
 
 
   {path:'',component:LoginComponent,canActivate: [LoginGuard], data: { expectedRol: ['Role_Artist','Role_Fanatic','Role_Upgrade_Artist'] }},

@@ -10,6 +10,7 @@
   }
   a {
     text-decoration: none;
+    padding-top: 10px;
   }
   .limited-size {
     max-width: calc(100%);
@@ -17,19 +18,20 @@
 </style>
 
 <div>
-<mat-card class="post-mat-card">
+<mat-card class="post-mat-card" style="border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-left-radius: 20px; border-top-right-radius: 20px;">
 
   <mat-card-header>
-    <div mat-card-avatar class="header-image"></div>
-    <mat-card-title>
-      <a href="https://www.shutterstock.com/es/search/example+stamp?image_type=illustration">
+    <mat-card-title style="display: inline-flex; padding-top: 8px; padding-bottom: 10px;">
+      <img [src]="retrievedImageUser" style="width: 45px; height: 40px; border-radius: 20px;">
+      <div style="padding-right: 20px;"></div>
+      <a href="https://www.shutterstock.com/es/search/example+stamp?image_type=illustration" style="color: black; font-family: Arial, Helvetica, sans-serif; font-weight: bold;">
         {{name}} {{lastname}}
       </a>
     </mat-card-title> <!-- Cambiar Shiba Inu por el nombre del usuario y el link por su homepage-->
   </mat-card-header>
 
   <mat-card-content>
-    <p id="post content description">
+    <p id="post content description" style="font-family: Arial, Helvetica, sans-serif; padding-left: 10px;">
       {{descripcion}}
     </p>
 
@@ -46,7 +48,7 @@
 
   <mat-card-actions align="end">
     <app-Opinionpublication [content]="fullPost" [user]="idop"></app-Opinionpublication>
-    <button mat-button (click)="getComments()" id="seecomments">See</button>
+    <button mat-button (click)="getComments()" id="seecomments"><mat-icon>comment</mat-icon></button>
 
     <button mat-button (click)="openDialog()" id="buttonFlagPost">
       <mat-icon>flag</mat-icon>

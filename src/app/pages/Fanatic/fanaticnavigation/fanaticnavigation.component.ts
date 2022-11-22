@@ -55,6 +55,9 @@ enterConfigurationFanatic(){
   this.cd.navigate(['/HomeFanatic',this.idnumber,'ConfigureFanatic']);
 }
 
+enterAlbum(){
+  this.cd.navigate(['/HomeFanatic',this.idnumber,'ArtistAlbums'])
+}
 
 Logout(){
   this.tokenService.logOut();

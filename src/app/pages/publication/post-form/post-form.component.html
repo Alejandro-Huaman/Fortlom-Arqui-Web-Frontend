@@ -11,33 +11,36 @@
     margin:auto;
   }
 </style>
-
-<mat-card class="post-form-mat-card">
-  <mat-form-field appearance="fill" class="example-full-width">
-    <textarea #txt matInput placeholder="Ex. It makes me feel..." id="setPost"></textarea>
+<br>
+<mat-card class="post-form-mat-card" style="border-radius: 20px;">
+  <mat-card-title style="font-family: Arial, Helvetica, sans-serif; font-weight: bold; padding-top: 8px;">Publicaciones Fortlom!</mat-card-title>
+  <br>
+  <mat-form-field appearance="outline" class="example-full-width">
+    <textarea #txt matInput placeholder="Ingrese la descripción de su publicación" id="setPost"></textarea>
   </mat-form-field>
-  <mat-card-actions align="end">
-    <button mat-button (click)="multimediaDialog = true" id="buttonClip"><mat-icon>link</mat-icon></button>
-    <button mat-raised-button color="primary" (click)="postPost(txt)" value="upload" id="buttonPost">Post</button>
-
+  <mat-card-actions align="end" style="padding-bottom: 10px;">
+    <button mat-button (click)="OpenMultimedia()" id="buttonClip"><mat-icon>image</mat-icon></button>
+    <button mat-raised-button (click)="postPost(txt)" value="upload" id="buttonPost">Post</button>
+    <div style="padding-right: 10px;"></div>
   </mat-card-actions>
 </mat-card>
 
 <div *ngIf="multimediaDialog">
   <br>
-  <mat-card class="medium-width">
+  <mat-card class="medium-width" style="border-radius: 20px;">
     <input
       #txtDialog1
       matInput
-      placeholder="Ex. https://content.ext"
+      placeholder="Example: https://content.ext"
       type="text"
     >
     <input type="file" (change)="onFileChanged($event)"  accept="image/png, image/jpeg, image/gif" id="setimage" #imagenInputFile>
 
-    <mat-card-actions align="end">
-      <button mat-button color="primary" (click)="multimediaDialog = false" id="buttonClose">Close</button>
-      <button mat-raised-button color="primary"
-              (click)="getLinkFromDialog(txtDialog1); multimediaDialog = false" id="buttonAppend">Append</button>
+    <mat-card-actions align="end" style="padding-bottom: 10px;">
+      <button mat-button  (click)="multimediaDialog = false" id="buttonClose">Close</button>
+      <button mat-raised-button 
+              (click)="getLinkFromDialog(txtDialog1); multimediaDialog = false" id="buttonAppend">Add</button>
+      <div style="padding-right: 10px;"></div>
     </mat-card-actions>
   </mat-card>
 </div>

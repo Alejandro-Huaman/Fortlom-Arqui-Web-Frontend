@@ -136,7 +136,14 @@ probar(){
 }
 
 
+OpenMultimedia(){
+  if(this.multimediaDialog == false){
+    this.multimediaDialog = true
+  }else{
+    this.multimediaDialog = false
+  }
 
+}
 
 
 

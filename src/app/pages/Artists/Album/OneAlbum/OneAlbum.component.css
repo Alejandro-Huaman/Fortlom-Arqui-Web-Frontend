@@ -1,0 +1,31 @@
+.basic-container {
+    text-align: center;
+    color: white;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-position: 50% 50%;
+    padding-top: 2rem;
+    overflow: auto;
+    
+  }
+  .introTitle{
+  
+    font-family: Arial, Helvetica, sans-serif;
+    color:whitesmoke;
+    
+    font-style: normal;
+    font-size: 60px;
+    font-weight: bold;
+    -webkit-text-stroke:0.25px;
+    -webkit-text-stroke-color: black;
+    position: absolute;
+    top: 200px;
+    left: 0;
+    right: 0;
+    line-height: 1.0em;
+    margin-left: 600px;
+    margin-right: 20px;
+    
+}

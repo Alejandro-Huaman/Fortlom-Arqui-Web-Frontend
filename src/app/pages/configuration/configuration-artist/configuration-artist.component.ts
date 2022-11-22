@@ -11,6 +11,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PersonService } from 'src/app/services/person/person.service';
 import { Tag } from 'src/app/models/Tag';
+import { UpgradeArtistDialogComponent } from './upgrade-artist-dialog/upgrade-artist-dialog.component';
 
 @Component({
   selector: 'app-configuration-artist',
@@ -338,8 +339,8 @@ updatepassword() {
   });
 }
 upgrade(){
-    this.artistService.updateArtistPremium(this.userdata.id).subscribe((response: any)=>{
-              alert("mejorada")
-    })
+  this.dialog.open(UpgradeArtistDialogComponent,{
+    data: this.idnumber
+  })
 }
 }

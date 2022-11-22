@@ -53,6 +53,7 @@ import { ChatComponent } from './pages/chat/chat/chat.component';
 import { HomeComponent } from './pages/admin/home/home.component';
 import { LoginadminComponent } from './pages/admin/loginadmin/loginadmin.component';
 import { SwiperModule } from "swiper/angular";
+import { ArtistEventCreateComponent } from './pages/Artists/artist-event-create/artist-event-create.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { SwiperModule } from "swiper/angular";
     DeleteespecComponent,
     LoginadminComponent,
     LoginadminComponent,
-    SetreportComponent
+    SetreportComponent,
+    ArtistEventCreateComponent
   ],
   imports: [
     BrowserModule,

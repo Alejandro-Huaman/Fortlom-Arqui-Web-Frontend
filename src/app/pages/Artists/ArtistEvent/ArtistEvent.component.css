@@ -180,3 +180,8 @@
   display: flex;
   text-align: center;
 }
+
+.add{
+  background-color: #cca027;
+  margin: 1rem;
+}

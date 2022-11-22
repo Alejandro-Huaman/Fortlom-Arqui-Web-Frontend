@@ -8,7 +8,7 @@ import {NgForm} from "@angular/forms";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Person } from 'src/app/models/Person';
 import { PersonService } from 'src/app/services/person/person.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Event } from 'src/app/models/event';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { DatePipe } from '@angular/common';
@@ -64,7 +64,9 @@ export class ArtistEventComponent implements OnInit {
   proDate = new Date();
   proDatevalue!:string;
 
-  constructor(private eventService: EventService,private userService: PersonService,private dialog:MatDialog, private route:ActivatedRoute,private datePipe: DatePipe,
+  idnumber!:number;
+
+  constructor(private eventService: EventService,private userService: PersonService, private cd:Router,private dialog:MatDialog, private route:ActivatedRoute,private datePipe: DatePipe,
     private AnswerService:AnswerService,private ArtistService:ArtistService) {
     this.eventdata = {} as Event;
     this.userdata = {} as Person;
@@ -107,21 +109,9 @@ export class ArtistEventComponent implements OnInit {
 
  
 
-  addEvent() {
-    console.log(this.idevent);
-    console.log(this.eventdata);
-    //this.eventdata.eventlikes=0
-    this.eventService.create(this.idevent,this.eventdata).subscribe((response: any) => {
-      this.ArtistService.getById(this.idevent).subscribe((response2:any)=>{
-        response.artist=response2
-        this.arrayevents.push( {...response});
-        this.arrayevents = this.arrayevents.map((o: any) => { return o; });
-      })
-      
-     
-    },err=>{
-      alert("campos mal puestos")
-    });
+  insertevent() {
+    this.cd.navigate(['/HomeArtist',this.idevent,"Event", "CreateEvent"])
+    //HomeArtist/:id/Event/CreateEvent
   }
 
   
@@ -150,16 +140,6 @@ export class ArtistEventComponent implements OnInit {
       });
       this.cancelEdit();
     });
-  }
-
-  onSubmit() {
-      console.log(this.eventdata);
-      if (this.isEditMode) {
-        this.updateEvent();
-        console.log("se actualizo")
-      } else {
-        this.addEvent();
-      }
   }
 
   getEventsById(id:number){

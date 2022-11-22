@@ -18,3 +18,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 	background-color: #cca027 !important;
    
 }
+
+.mat-pseudo-checkbox .mat-pseudo-checkbox-checked{
+	color: #cca027;
+	background-color: #cca027;
+	
+}
+
+
+
+.mat-list-content{
+	color: #cca027;
+	background-color: #cca027;
+}

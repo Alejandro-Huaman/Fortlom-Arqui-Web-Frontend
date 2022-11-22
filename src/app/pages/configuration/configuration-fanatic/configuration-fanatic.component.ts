@@ -23,7 +23,7 @@ export class ConfigurationFanaticComponent implements OnInit {
   numberuser : number = 5;
   dataSource!: MatTableDataSource<any>;
   arraygenders : string[] = [];
-  aleatorygender: string[] = ["Progresive Rock","Sound Engineering","2000 Wave","Complex","2010 Wave","Hard Rock","Classic Metal"]
+  aleatorygender: string[] = ["Rock","Pop","Indie","Complex","Jazz","Blues","Electro"]
 
   @ViewChild('UserForm', {static: false})
   UserForm!: NgForm;

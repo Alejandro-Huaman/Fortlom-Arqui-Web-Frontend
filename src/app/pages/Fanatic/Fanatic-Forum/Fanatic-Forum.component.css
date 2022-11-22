@@ -10,19 +10,31 @@
     }
     .forumtitle{
     
-      color:#0B50C0;
+      color:black;
+      font-weight: bold;
+    }
+    .forumname{
+    
+      color:black;
     }
     .card
     {
-      background-color:#C8C8C8;
-      margin-bottom: 20px;
+      background-color:white;
+      margin-bottom: 40px;
     }
     .add
-    
     {
-      margin-top: 20px;
       background-color:black;
       margin-bottom: 20px;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 40px;
+      height: auto;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
     .table-card{
       height: 70vh;
@@ -34,6 +46,29 @@
     .mats
     {
     
-      margin-top: 10%;
+      margin-top: 2%;
     
+    }
+    .responsive {
+      width: 100%;
+      height: auto;
+    }
+    .basic-container {
+      color: white;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      background-position: 50% 50%;
+      overflow: auto;
+      background-image: url(./FondoForum.png);
+      
+    }
+    .Cardforum {
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+    .example-header-image {
+      background-image: url('https://media.revistavanityfair.es/photos/60e82b88bf8d45dd8c6f5f39/master/w_3638,h_3006,c_limit/228632.jpg');
+      background-size: cover;
     }

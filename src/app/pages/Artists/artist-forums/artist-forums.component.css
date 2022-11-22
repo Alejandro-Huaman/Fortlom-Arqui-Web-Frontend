@@ -1,39 +1,74 @@
 .button-row button{
 
-    margin:10px;
+  margin:10px;
   
-    }
-    .search-form-field
-    {
+  }
+  .search-form-field
+  {
   
-      margin:20px;
-    }
-    .title{
+    margin:20px;
+  }
+  .forumtitle{
   
-      color:#0B50C0;
-    }
-    .card
-    {
-      background-color:#C8C8C8;
-      margin-bottom: 20px;
-    }
-    .add
+    color:black;
+    font-weight: bold;
+  }
+  .forumname{
   
-    {
-      margin-top: 20px;
-      background-color:black;
-      margin-bottom: 20px;
-    }
-    .table-card{
-      height: 70vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-     margin-top: 20%;
-    }
-    .mats
-    {
+    color:black;
+  }
+  .card
+  {
+    background-color:white;
+    margin-bottom: 40px;
+  }
+  .add
+  {
+    background-color:black;
+    margin-bottom: 20px;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .table-card{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   margin-top: 20%;
+  }
+  .mats
+  {
   
-      margin-top: 10%;
+    margin-top: 2%;
   
-    }
+  }
+  .responsive {
+    width: 100%;
+    height: auto;
+  }
+  .basic-container {
+    color: white;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-position: 50% 50%;
+    overflow: auto;
+    background-image: url(./FondoForum.png);
+    
+  }
+  .Cardforum {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  .example-header-image {
+    background-image: url('https://media.revistavanityfair.es/photos/60e82b88bf8d45dd8c6f5f39/master/w_3638,h_3006,c_limit/228632.jpg');
+    background-size: cover;
+  }

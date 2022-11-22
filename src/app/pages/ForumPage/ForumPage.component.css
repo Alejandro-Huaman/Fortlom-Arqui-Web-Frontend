@@ -1,6 +1,6 @@
 .forumtitle{
 
-    color:#0B50C0;
+    color:black;
     font-size:30px
   }
   .card
@@ -55,5 +55,29 @@
     margin-bottom: 30px;
   }
   .cardrules{
-    background-color:#c8c8c8d2;
+    background-color:black;
+    color: white;
+    padding-left: 20px;
+  }
+  .responsive {
+    width: 100%;
+    height: auto;
+  }
+  
+  .basic-container {
+    color: white;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-position: 50% 50%;
+    overflow: auto;
+    background-image: url(./FondoForum.png);
+    
+  }
+  .Cardforum {
+    padding-top: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 50px;
   }

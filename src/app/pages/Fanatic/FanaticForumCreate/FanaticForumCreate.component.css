@@ -19,3 +19,18 @@ margin-bottom: 10px;
 width: 50%;
   border-color: black;
 }
+.basic-container {
+  color: white;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-position: 50% 50%;
+  overflow: auto;
+  background-image: url(./FondoForum.png);
+  
+}
+
+.Cardforum {
+  padding: 100px;
+}

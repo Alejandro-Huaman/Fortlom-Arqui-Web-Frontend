@@ -103,7 +103,7 @@ export class ArtistEventCreateComponent implements OnInit {
         this.arrayevents = this.arrayevents.map((o: any) => { return o; });
         this.cd.navigate(['/HomeArtist',this.idevent,"Event"])
       },err=>{
-        alert("campos mal puestos")
+        alert("campos mal puestos o no es artista premium")
       });
 
     }

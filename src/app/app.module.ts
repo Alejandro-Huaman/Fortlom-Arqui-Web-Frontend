@@ -57,6 +57,7 @@ import { CreateAlbumComponent } from './pages/Artists/Album/CreateAlbum/CreateAl
 import { CreateMusicComponent } from './pages/Artists/Album/CreateMusic/CreateMusic.component';
 import { OneAlbumComponent } from './pages/Artists/Album/OneAlbum/OneAlbum.component';
 import { SwiperModule } from "swiper/angular";
+import { ArtistEventCreateComponent } from './pages/Artists/artist-event-create/artist-event-create.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { SwiperModule } from "swiper/angular";
     LoginadminComponent,
     LoginadminComponent,
     SetreportComponent,
+    ArtistEventCreateComponent
     AlbumComponent,
     CreateAlbumComponent,
     CreateMusicComponent,

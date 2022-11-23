@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Album } from 'src/app/models/Album';
 import { AlbumService } from 'src/app/services/album/album.service';
 import { MusicService } from 'src/app/services/music/music.service';
 
@@ -13,10 +14,14 @@ export class OneAlbumComponent implements OnInit {
   idnumber!:number;
   whois!:string
   albumidnumber!:number;
+  onealbumobject:Album;
   dataSource: MatTableDataSource<any>;
+  dataSource2: MatTableDataSource<any>;
   
   constructor(private cd:Router, private route:ActivatedRoute, private albumService:AlbumService, private musicService:MusicService) {
     this.dataSource = new MatTableDataSource<any>();
+    this.dataSource2 = new MatTableDataSource<any>();
+    this.onealbumobject = {} as Album;
    }
 
   ngOnInit() {
@@ -35,6 +40,7 @@ export class OneAlbumComponent implements OnInit {
     console.log(this.albumidnumber)
 
     this.getMusicsByAlbumId()
+    this.getByIdAlbum()
   }
 
   CreateMusic(){
@@ -44,10 +50,20 @@ export class OneAlbumComponent implements OnInit {
   }
 
   getByIdAlbum(){
-    /*this.albumService.get().subscribe((response: any) => {
-      this.dataSource.data = response.content;
-      console.log(this.dataSource.data)
-    });*/
+    this.albumService.getAll().subscribe((response: any) => {
+      this.dataSource2.data = response.content;
+      console.log(this.dataSource2.data)
+      console.log(this.dataSource2.data.length)
+      console.log(this.dataSource2.data[0])
+
+      for(let i=0;i<this.dataSource2.data.length;i++){
+        if(this.albumidnumber == this.dataSource2.data[i].id){
+          this.onealbumobject = this.dataSource2.data[i]
+          console.log(this.onealbumobject)
+        }
+      }
+
+    });
   }
 
   getMusicsByAlbumId(){

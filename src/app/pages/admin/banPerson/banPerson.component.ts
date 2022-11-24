@@ -47,7 +47,6 @@ export class BanPersonComponent implements OnInit {
     })
   }
   banartist(id:number){
-    alert("a")
      this.ArtistService.updateArtistBan(id).subscribe((response: any)=>{
                alert("usuario baneado")
      })

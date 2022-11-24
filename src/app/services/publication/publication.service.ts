@@ -81,4 +81,11 @@ export class PublicationService {
       catchError(this.handleError));
   }
 
+  existpublication(publicationId:number):Observable<boolean>{
+    return this.http.get<boolean>(`${this.basePath}/publications/check/${publicationId}`, this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError));
+  }
+
 }

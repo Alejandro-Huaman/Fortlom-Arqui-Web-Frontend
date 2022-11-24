@@ -1,24 +1,16 @@
 <app-navegation></app-navegation>
 <body class="imagebackground">
   <div class="cardcontent">
-  <p class="text">Nombre:</p>
-  <p class="text">Lorem:</p>
-  <p class="text">Description:</p>
-
-      <tr>
-        <th>
-          <mat-form-field  appearance="fill" class="box">
+  <div *ngIf="whois == 'Publication'">
+    <p class="text">Description: {{objectcontent.description}}</p>
+  </div>
   
-            <textarea matInput ></textarea>
-          </mat-form-field>
-        </th>
-        <th>
-          <img src="">
-        </th>
-      </tr>
-
-
-    <button mat-raised-button color="primary">Eliminar</button>
+  <div *ngIf="whois == 'Event'">
+    <p class="text">Nombre: {{objectcontent.name}}</p>
+    <p class="text">Description: {{objectcontent.description}}</p>    
+  </div>  
+  
+  <button mat-raised-button color="primary" (click)="DeleteContent(whois)">Eliminar</button>
  
   </div>
 </body>

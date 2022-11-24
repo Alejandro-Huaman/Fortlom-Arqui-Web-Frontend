@@ -43,7 +43,7 @@ export class CreateAlbumComponent implements OnInit {
       
      if(this.selectedFile!=undefined){
 
-      this.MultimediaService.createimageforAlbum(this.selectedFile,this.objectAlbum.id).subscribe((response:any)=>{
+      this.MultimediaService.createimageforAlbum(this.selectedFile,response.id).subscribe((response:any)=>{
         this.cd.navigate(["HomeArtist",this.idurl,'Albums'])
 
       })

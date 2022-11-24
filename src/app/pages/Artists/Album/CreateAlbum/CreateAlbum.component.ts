@@ -1,3 +1,4 @@
+import { MultimediaService } from 'src/app/services/multimedia/multimedia.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,7 +16,7 @@ export class CreateAlbumComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   objectAlbum:Album;
   idurl!:number
-  constructor(private albumService:AlbumService,private formBuilder:FormBuilder,private route:ActivatedRoute, private cd:Router) {
+  constructor(private albumService:AlbumService,private formBuilder:FormBuilder,private route:ActivatedRoute, private cd:Router,private MultimediaService:MultimediaService) {
     this.dataSource = new MatTableDataSource<any>();
     this.objectAlbum = {} as Album;
   }
@@ -29,6 +30,8 @@ export class CreateAlbumComponent implements OnInit {
     let pod=parseInt(this.route.snapshot.paramMap.get('id')!);
     this.idurl= pod;
     console.log(this.idurl)
+    console.log("this.selectedFile")
+    console.log(this.selectedFile)
   }
 
   CrearAlbum(){
@@ -37,9 +40,36 @@ export class CreateAlbumComponent implements OnInit {
       this.dataSource.data.push( {...response});
       this.dataSource.data = this.dataSource.data.map((o: any) => { return o; });
       alert("Se creo el álbum correctamente")
+      
+     if(this.selectedFile!=undefined){
+
+      this.MultimediaService.createimageforAlbum(this.selectedFile,this.objectAlbum.id).subscribe((response:any)=>{
+        this.cd.navigate(["HomeArtist",this.idurl,'Albums'])
+
+      })
+     }else{
       this.cd.navigate(["HomeArtist",this.idurl,'Albums'])
+     }
     },err=>{
       alert("campos mal puestos")
     });
   }
+  selectedFile!: File;
+imagenMin!: File;
+public onFileChanged(event:any) {
+  //Select File
+    this.selectedFile = event.target.files[0];
+    const fr = new FileReader();
+    fr.onload = (evento: any) => {
+      this.imagenMin = evento.target.result;
+    };
+    fr.readAsDataURL(this.selectedFile);
+    console.log("image")
+
+  }
+
+
+
+
+
 }

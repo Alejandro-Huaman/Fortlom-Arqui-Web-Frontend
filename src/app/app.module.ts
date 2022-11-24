@@ -1,3 +1,4 @@
+import { ImagealbumComponent } from './pages/Artists/Album/OneAlbum/imagealbum/imagealbum.component';
 import { SetreportComponent } from './pages/admin/setreport/setreport.component';
 import { DeleteespecComponent } from './pages/admin/deleteespec/deleteespec.component';
 import { NavegationComponent } from './pages/admin/navegation/navegation.component';
@@ -114,7 +115,8 @@ import { UpgradeArtistDialogComponent } from './pages/configuration/configuratio
     CreateAlbumComponent,
     CreateMusicComponent,
     OneAlbumComponent,
-    UpgradeArtistDialogComponent
+    UpgradeArtistDialogComponent,
+    ImagealbumComponent
   ],
   imports: [
     BrowserModule,

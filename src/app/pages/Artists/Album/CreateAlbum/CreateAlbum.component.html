@@ -12,6 +12,11 @@
             <input matInput formControlName="name" class="con" [(ngModel)]="objectAlbum.name" type="name" required id="albumname" maxlength="20">
             <mat-error *ngIf="createform.controls['name'].dirty && createform.hasError('required') || createform.controls['name'].invalid">Es requerido el nombre</mat-error>
       </mat-form-field>
+      <input style="display:none" type="file" id="my-file" (change)="onFileChanged($event)">
+      <div class="loadFileBtn">
+        <button mat-button type="button" class onclick="document.getElementById('my-file').click()"><mat-icon class="iconFileBtn">add_circle</mat-icon></button>
+      </div>
+
   </mat-card-header>
   <mat-form-field appearance="outline" class="area">
     <mat-label>Album description</mat-label>

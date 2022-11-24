@@ -93,8 +93,14 @@ retrievedImageUser!:string
 
   getImageofUser(id:number){
     this.multimediaService.getImageByUserId(id).subscribe((response: any)=>{
-           this.retrievedImageUser=response.content[0].imagenUrl
-           console.log(this.retrievedImageUser)
+      if(response.numberOfElements==0){
+        this.retrievedImage="https://cdn.discordapp.com/attachments/1008578583251406990/1031677299101286451/unknown.png"
+        console.log(this.retrievedImage)
+      }else{
+        this.retrievedImageUser=response.content[0].imagenUrl
+        console.log(this.retrievedImageUser)
+      }
+          
     })
   }
 

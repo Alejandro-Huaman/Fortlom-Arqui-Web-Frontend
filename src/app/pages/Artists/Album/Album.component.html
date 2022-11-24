@@ -32,7 +32,7 @@
             <mat-card-title>{{album.name}}</mat-card-title>
             <div>{{album.description}}</div>
             <br>
-            <img src="assets/images/album.jpg">
+            <app-imagealbum [id]="album.id"></app-imagealbum>
           </mat-card-content>
         </mat-card>
       </button>

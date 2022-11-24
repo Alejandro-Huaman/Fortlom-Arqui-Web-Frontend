@@ -17,7 +17,7 @@ export class OneAlbumComponent implements OnInit {
   onealbumobject:Album;
   dataSource: MatTableDataSource<any>;
   dataSource2: MatTableDataSource<any>;
-  
+  retrievedImage!: string;
   constructor(private cd:Router, private route:ActivatedRoute, private albumService:AlbumService, private musicService:MusicService) {
     this.dataSource = new MatTableDataSource<any>();
     this.dataSource2 = new MatTableDataSource<any>();
@@ -41,6 +41,7 @@ export class OneAlbumComponent implements OnInit {
 
     this.getMusicsByAlbumId()
     this.getByIdAlbum()
+    
   }
 
   CreateMusic(){

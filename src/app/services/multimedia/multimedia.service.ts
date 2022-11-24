@@ -49,6 +49,23 @@ export class MultimediaService {
        retry(2),
        catchError(this.handleError));
  }
+ createimageforAlbum(item: File,userId:number){
+  const formData = new FormData();
+  formData.append('multipartFile', item);
+  return this.http.post(`${this.basePath}/upload/albums/${userId}/images`, formData,  { observe: 'response' })
+     .pipe(
+       retry(2),
+       catchError(this.handleError));
+
+ }
+ getImageByAlbum(id:number){
+  
+  return this.http.get<Multimedia>(`${this.basePath}/album/${id}/images`, this.httpOptions)
+  .pipe(
+    retry(2),
+    catchError(this.handleError));
+
+}
  
   getImageByPublicationId(id:number){
   
